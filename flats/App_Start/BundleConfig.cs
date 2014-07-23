@@ -19,7 +19,10 @@ namespace flats
             bundles.Add(new ScriptBundle("~/libs").Include(
                         "~/Scripts/lib/jquery/jquery-1.7.1.min.js",
                         "~/Scripts/lib/underscore/underscore.min.js",
-                        "~/Scripts/lib/backbone/backbone.min.js"));
+                        "~/Scripts/lib/backbone/backbone.min.js",
+                        "~/Scripts/lib/moment/moment.min.js",
+                        "~/Scripts/lib/moment/moment.ru.js"));
+
 
             bundles.Add(new ScriptBundle("~/app").Include(
                 
