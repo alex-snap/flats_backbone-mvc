@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using BundleTransformer.Core.Transformers;
 
 namespace flats
 {
@@ -9,10 +10,19 @@ namespace flats
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            var cssTransformer = new CssTransformer();
+            var css = new Bundle("~/styles")
+                .Include("~/Content/styles.less");
+            css.Transforms.Add(cssTransformer);
+            bundles.Add(css);
+
             bundles.Add(new ScriptBundle("~/libs").Include(
                         "~/Scripts/lib/jquery/jquery-1.7.1.min.js",
                         "~/Scripts/lib/underscore/underscore.min.js",
-                        "~/Scripts/lib/backbone/backbone.min.js"));
+                        "~/Scripts/lib/backbone/backbone.min.js",
+                        "~/Scripts/lib/moment/moment.min.js",
+                        "~/Scripts/lib/moment/moment.ru.js"));
+
 
             bundles.Add(new ScriptBundle("~/app").Include(
                 
@@ -39,13 +49,6 @@ namespace flats
                         "~/Scripts/app/router.js"
 
                         ));
-
-            bundles.Add(new StyleBundle("~/styles").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/custom.css",
-                      "~/Content/bootstrap-select.css",
-                      "~/Content/bootstrap-select.min.css"));
 
             BundleTable.EnableOptimizations = true;
         }
