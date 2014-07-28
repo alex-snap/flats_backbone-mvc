@@ -24,9 +24,7 @@ D:\flats\flats_backbone-mvc\flats\bin\WebGrease.dll
 D:\flats\flats_backbone-mvc\flats\bin\Antlr3.Runtime.pdb
 D:\flats\flats_backbone-mvc\flats\bin\Newtonsoft.Json.xml
 D:\flats\flats_backbone-mvc\flats\bin\System.Web.Optimization.xml
-D:\flats\flats_backbone-mvc\flats\bin\System.Net.Http.xml
 D:\flats\flats_backbone-mvc\flats\bin\System.Net.Http.Formatting.xml
-D:\flats\flats_backbone-mvc\flats\bin\System.Net.Http.WebRequest.xml
 D:\flats\flats_backbone-mvc\flats\bin\System.Web.Helpers.xml
 D:\flats\flats_backbone-mvc\flats\bin\System.Web.Http.xml
 D:\flats\flats_backbone-mvc\flats\bin\System.Web.Http.WebHost.xml
@@ -41,3 +39,16 @@ D:\flats\flats_backbone-mvc\flats\bin\ru-ru\JavaScriptEngineSwitcher.Core.resour
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.csprojResolveAssemblyReference.cache
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.dll
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.pdb
+D:\flats\flats_backbone-mvc\flats\bin\Core.dll
+D:\flats\flats_backbone-mvc\flats\bin\EntityFramework.dll
+D:\flats\flats_backbone-mvc\flats\bin\EntityFramework.SqlServer.dll
+D:\flats\flats_backbone-mvc\flats\bin\Core.pdb
+D:\flats\flats_backbone-mvc\flats\bin\EntityFramework.xml
+D:\flats\flats_backbone-mvc\flats\bin\EntityFramework.SqlServer.xml
+D:\flats\flats_backbone-mvc\flats\bin\ClearScript.V8\ClearScriptV8-32.dll
+D:\flats\flats_backbone-mvc\flats\bin\ClearScript.V8\ClearScriptV8-64.dll
+D:\flats\flats_backbone-mvc\flats\bin\ClearScript.V8\v8-ia32.dll
+D:\flats\flats_backbone-mvc\flats\bin\ClearScript.V8\v8-x64.dll
+D:\flats\flats_backbone-mvc\flats\bin\ClearScript.dll
+D:\flats\flats_backbone-mvc\flats\bin\JavaScriptEngineSwitcher.V8.dll
+D:\flats\flats_backbone-mvc\flats\bin\ru-ru\JavaScriptEngineSwitcher.V8.resources.dll

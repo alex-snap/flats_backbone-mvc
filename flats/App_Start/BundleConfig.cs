@@ -10,7 +10,7 @@ namespace flats
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            var cssTransformer = new CssTransformer();
+            var cssTransformer = new StyleTransformer();
             var css = new Bundle("~/styles")
                 .Include("~/Content/styles.less");
             css.Transforms.Add(cssTransformer);
@@ -50,7 +50,7 @@ namespace flats
 
                         ));
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }
