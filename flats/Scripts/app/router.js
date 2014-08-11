@@ -1,25 +1,27 @@
-﻿var App = App || {
-    Models:         {},
-    Collections:    {},
-    Views:          {},
-    Routers:        {}
-};
-
-(function() {
+﻿define(function (require) {
+    var $ = require('jquery'),
+        Backbone = require('backbone');
     var Router = Backbone.Router.extend({
         routes: {
-            '': 'home',
-            'flats/new': 'editFlat',
-            'flats/edit/:id': 'editFlat'
+            '':                 'home',
+            'flats/new':        'editFlat',
+            'flats/edit/:id':   'editFlat'
         }
     });
 
-    App.Routers.router = new Router();
-    App.Routers.router.on('route:home', function () {
-        App.Views.flatList.render();
-    });
-    App.Routers.router.on('route:editFlat', function (id) {
-        App.Views.editFlat.render({ id: id });
-    });
-    Backbone.history.start();
-})();
+    var init = function () {
+        var router = new Router();
+        router.on('route:home', function () {
+            require('FlatViewList').render();
+        });
+        router.on('route:editFlat', function (id) {
+            require('FlatViewEdit').render({ id: id });
+        });
+        Backbone.history.start();
+    }
+
+    return {
+        init: init
+    }
+    
+});

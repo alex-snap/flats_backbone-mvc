@@ -1,0 +1,25 @@
+﻿<% _.each(flats, function(flat){%>
+<div class="col-xs-6">
+    <div class="flat">
+        <div class="flat__head">
+            <%= flat.address %>
+        </div>
+        <a href="#/flats/<%= flat.id %>" class="flat__photo">
+            <img src="<%= flat.image.src %>" alt="<%= flat.image.desc %>">
+        </a>
+        <div class="flat__info">
+            <%= flat.rooms %> <br />
+            <%= flat.status %><br />
+            ползунок     <br />
+        </div>
+        <div class="flat__price">
+            <%= flat.price %>
+            <div class="flat__price__description">
+                рублей/<span>сутки</span>
+            </div>
+        </div>
+        <a href="#/flats/<%= flat.id %>" class="flat__more">Подробнее &#9658;</a>
+        <a href="#/flats/edit/<%= flat.id %>">Редактировать &#9658;</a>
+    </div>
+</div>
+<% }); %>

@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width" />
         <meta name="title" content="@(ViewBag.OgTitle ?? "Квартиры посуточно в Казани"))" />
         @*<link rel="icon" type="image/png" href="~/Images/icon-favicon.png" />*@
-        @Styles.Render("~/styles")
+        @*@Styles.Render("~/styles")
         @Scripts.Render("~/libs")
-        @Scripts.Render("~/app")
+        @Scripts.Render("~/app")*@
     </head>
     <body>
-        @Html.Partial("Layouts");
-        @Html.Partial("Templates");
         <input type="hidden" id="token" value="@Html.AntiForgeryToken()" />
         <div id="main">
         </div>
+        <script src="/Scripts/libs/require/require.js"></script>
+        <script src="/Scripts/app/main.js"></script>
     </body>
 </html>
