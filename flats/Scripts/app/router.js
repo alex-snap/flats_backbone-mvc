@@ -1,6 +1,6 @@
 ﻿define(function (require) {
-    var $ = require('jquery'),
-        Backbone = require('backbone');
+    var Backbone = require('backbone');
+
     var Router = Backbone.Router.extend({
         routes: {
             '':                 'home',
