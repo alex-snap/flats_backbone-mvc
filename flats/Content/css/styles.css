@@ -1,0 +1,392 @@
+/* Styles
+---------------------------------------------------------------------------------- */
+/* Base
+-------------------------------------------------- */
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+.hide {
+  display: none;
+}
+.no-float:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.show {
+  display: block;
+}
+@font-face {
+  font-family: 'helvetica_roman';
+  src: url('/Content/fonts/helveticaneuecyr-roman-webfont.eot');
+  src: url('/Content/fonts/helveticaneuecyr-roman-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/helveticaneuecyr-roman-webfont.woff') format('woff'), url('/Content/fonts/helveticaneuecyr-roman-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'helvetica_bold';
+  src: url('/Content/fonts/helveticaneuecyr-bold-webfont.eot');
+  src: url('/Content/fonts/helveticaneuecyr-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/helveticaneuecyr-bold-webfont.woff') format('woff'), url('/Content/fonts/helveticaneuecyr-bold-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'helvetica_light';
+  src: url('/Content/fonts/helveticaneuecyr-light-webfont.eot');
+  src: url('/Content/fonts/helveticaneuecyr-light-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/helveticaneuecyr-light-webfont.woff') format('woff'), url('/Content/fonts/helveticaneuecyr-light-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'helvetica_medium';
+  src: url('/Content/fonts/helveticaneuecyr-medium-webfont.eot');
+  src: url('/Content/fonts/helveticaneuecyr-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/helveticaneuecyr-medium-webfont.woff') format('woff'), url('/Content/fonts/helveticaneuecyr-medium-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Typography
+---------------------------------------------------------------------------------- */
+html,
+body {
+  color: #444444;
+}
+/* /Typography
+---------------------------------------------------------------------------------- *//* /Base */
+/* Sub Applications
+-------------------------------------------------- */
+/* Footer, header, etc
+-------*/
+#main-region.with-footer {
+  margin-bottom: -120px;
+  padding-bottom: 40px;
+}
+#main-region.with-footer:after {
+  content: '';
+  display: block;
+  height: 120px;
+}
+.footer {
+  height: 120px;
+  color: #859e9e;
+  background: #000;
+}
+.footer__inner {
+  padding: 30px 0;
+}
+/* /Flats app*/
+/* Flats app
+-------*/
+/* Flats list
+---------------------------------------------------------------------------------- */
+.fl-list__header {
+  background: url('../img/bg-city.jpg') center no-repeat;
+  background-size: cover;
+  min-height: 300px;
+  position: relative;
+}
+.fl-list__header__group {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 130px;
+}
+.fl-list__items {
+  padding-top: 20px;
+}
+.flat {
+  padding: 12px 18px 12px 18px;
+  background: #eeeeee url("../img/darkgrain.png");
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin: 15px 5%;
+  position: relative;
+  width: 40%;
+  float: left;
+}
+.flat:hover {
+  text-decoration: none;
+}
+.flat:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.flat__header {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  max-height: 25px;
+  max-width: 70%;
+  overflow: hidden;
+}
+.flat__header a {
+  color: #444444;
+}
+.flat__header a:hover {
+  text-decoration: underline;
+  color: #444444;
+}
+.flat__img-wrap {
+  width: 70%;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.flat__img-wrap:hover .flat__img__detail {
+  display: block;
+}
+.flat__img {
+  max-height: 100%;
+  max-width: 100%;
+}
+.flat__img__detail {
+  position: absolute;
+  text-align: center;
+  height: 32px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: none;
+  width: 100%;
+  color: #fff;
+  padding: 6px 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+.flat__info {
+  position: absolute;
+  text-align: center;
+  width: 25%;
+  top: 0;
+  right: 0;
+}
+.flat__info__block {
+  width: 100%;
+  margin-bottom: 15px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #563d7c;
+}
+.flat__info__block__top {
+  color: #fff;
+  font-size: 1.6em;
+}
+.flat__info__block__bot {
+  color: #fff;
+  font-size: .8em;
+  border-top: 1px solid #fff;
+}
+.flat__info__block--price {
+  width: 115%;
+  background-color: #9572CC;
+}
+.flat__info__block--price .flat__info__block__top {
+  font-size: 2em;
+}
+.smart-filter__title {
+  color: #fff;
+}
+.search__title {
+  color: #fff;
+}
+/* /Flats list
+---------------------------------------------------------------------------------- *//* Examplte page
+---------------------------------------------------------------------------------- */
+.page {
+  width: 70%;
+  margin: 0 auto;
+}
+/* /Example page
+---------------------------------------------------------------------------------- *//* Examplte page
+---------------------------------------------------------------------------------- */
+.page {
+  width: 70%;
+  margin: 0 auto;
+}
+/* /Example page
+---------------------------------------------------------------------------------- *//* /Flats app*/
+/* /Sub applications */
+/* /Styles
+---------------------------------------------------------------------------------- */

@@ -180,26 +180,29 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\models\flats\model_flat.js" />
-    <Content Include="Scripts\app\router.js" />
-    <Content Include="Scripts\app\main.js" />
-    <Content Include="Scripts\app\views\flats\view_flat-item.js" />
-    <Content Include="Scripts\app\views\flats\view_flat-edit.js" />
-    <Content Include="Scripts\app\views\flats\view_flat-list.js" />
-    <Content Include="Scripts\lib\backbone\backbone.js" />
-    <Content Include="Scripts\lib\backbone\backbone.min.js" />
-    <Content Include="Scripts\lib\backbone\backbone.min.map" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\config\storage\localstorage.js" />
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Scripts\lib\jquery\jquery-1.7.1-vsdoc.js" />
-    <Content Include="Scripts\lib\jquery\jquery-1.7.1.js" />
-    <Content Include="Scripts\lib\jquery\jquery-1.7.1.min.js" />
-    <Content Include="Scripts\lib\moment\moment.min.js" />
-    <Content Include="Scripts\lib\moment\moment.ru.js" />
-    <Content Include="Scripts\lib\underscore\underscore.js" />
-    <Content Include="Scripts\lib\underscore\underscore.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.js" />
+    <Content Include="Scripts\libs\backbone\backbone.localStorage.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.syphon.js" />
+    <Content Include="Scripts\libs\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\libs\jquery\jquery-ui.min.js" />
+    <Content Include="Scripts\libs\json\json2.min.js" />
+    <Content Include="Scripts\libs\marionette\backbone.marionette.min.js" />
+    <Content Include="Scripts\libs\moment\moment.min.js" />
+    <Content Include="Scripts\libs\moment\moment.ru.js" />
+    <Content Include="Scripts\libs\require\async.js" />
+    <Content Include="Scripts\libs\require\r.js" />
+    <Content Include="Scripts\libs\require\require.js" />
+    <Content Include="Scripts\libs\require\text.js" />
+    <Content Include="Scripts\libs\underscore\underscore-tpl.js" />
+    <Content Include="Scripts\libs\underscore\underscore.js" />
+    <Content Include="Scripts\libs\underscore\underscore.min.js" />
+    <Content Include="Scripts\require_main.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -210,16 +213,18 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\lib\underscore\underscore.min.map" />
     <Content Include="Views\Shared\Layouts.cshtml" />
     <Content Include="Views\Shared\Templates.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\libs\backbone\backbone.min.map" />
+    <Content Include="Scripts\libs\underscore\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\app\collections\" />
+    <Folder Include="Scripts\apps\" />
+    <Folder Include="Scripts\entities\" />
     <Folder Include="Scripts\templates\" />
   </ItemGroup>
   <ItemGroup>
