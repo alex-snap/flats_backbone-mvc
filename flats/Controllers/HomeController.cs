@@ -43,7 +43,7 @@ namespace flats.Controllers
                 db.Flats.Add(flat);
                 db.SaveChanges();
             }
-            return Content("OK");
+            return View();
         }
 
     }
