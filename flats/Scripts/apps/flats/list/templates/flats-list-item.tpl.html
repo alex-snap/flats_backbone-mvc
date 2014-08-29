@@ -1,24 +1,24 @@
-﻿<div class="flat">
-    <div class="flat__header">
-        <a href="#flats/<%= flat.id %>"><%= flat.address %></a>
+﻿<div class="fl-list__item">
+    <div class="fl-list__item__header">
+        <a href="#flats/item/<%= flat.id %>"><%= flat.address %></a>
     </div>
-    <a href="#flats/<%= flat.id %>" class="flat__img-wrap">
-        <img class="flat__img" src="<%= flat.imgSrc %>" alt="<%= flat.address %>" />
-        <div class="flat__img__detail">подробнее</div>
+    <a href="#flats/item/<%= flat.id %>" class="fl-list__item__img-wrap">
+        <img class="fl-list__item__img" src="<%= flat.imgSrc %>" alt="<%= flat.address %>" />
+        <div class="fl-list__item__img__detail">подробнее</div>
     </a>
-    <div class="flat__info">
-        <div class="flat__info__block flat__info__block--price">
-            <div class="flat__info__block__top"><%= flat.price %> р</div>
-            <div class="flat__info__block__bot">в сутки</div>
+    <div class="fl-list__item__info">
+        <div class="fl-list__item__info__block fl-list__item__info__block--price">
+            <div class="fl-list__item__info__block__top"><%= flat.price %> р</div>
+            <div class="fl-list__item__info__block__bot">в сутки</div>
         </div>
-        <div class="flat__info__block">
-            <div class="flat__info__block__top"><%= flat.rooms %></div>
-            <div class="flat__info__block__bot"><%= words.rooms %></div>
+        <div class="fl-list__item__info__block">
+            <div class="fl-list__item__info__block__top"><%= flat.rooms %></div>
+            <div class="fl-list__item__info__block__bot"><%= words.rooms %></div>
         </div>
         <% if (flat.sleeper) {%>
-        <div class="flat__info__block">
-            <div class="flat__info__block__top"><%= flat.sleeper %></div>
-            <div class="flat__info__block__bot"><%= words.sleeper %></div>
+        <div class="fl-list__item__info__block">
+            <div class="fl-list__item__info__block__top"><%= flat.sleeper %></div>
+            <div class="fl-list__item__info__block__bot"><%= words.sleeper %></div>
         </div>
         <% } %>
     </div>

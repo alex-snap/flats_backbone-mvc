@@ -1,0 +1,39 @@
+﻿<div class="flat-single">
+    <div class="container">
+        <div class="flat-single__header">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2><%= address %></h2>
+                </div>
+                <div class="col-md-5">
+                    <span class="flat-single__price"><%= price %> <span class="flat-single__price__text">руб/сутки</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="flat-single__img-wrap">
+                    <img class="flat-single__img" src="<%= imgSrc %>" alt="<%= address %>" />
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="flat-single__info">
+                    <div class="flat-single__info__item"><%= rooms %> комната</div>
+                    <div class="flat-single__info__item"><%= sleeper %> спальных мест</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="flat-single__desc">
+                    <h4>Краткое описание</h4>
+                    <%= description %>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4>На карте</h4>
+                <div id="js-flat-map" class="flat-single__map"></div>
+            </div>
+        </div>
+    </div>
+</div>

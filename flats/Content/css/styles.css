@@ -1,3 +1,4 @@
+@import "../../Scripts/libs/backgrid/backgrid-paginator.css";
 /* Styles
 ---------------------------------------------------------------------------------- */
 /* Base
@@ -230,13 +231,15 @@ body {
 }
 /* /Typography
 ---------------------------------------------------------------------------------- *//* /Base */
-/* Sub Applications
--------------------------------------------------- */
 /* Footer, header, etc
 -------*/
+html,
+body {
+  height: 100%;
+}
 #main-region.with-footer {
   margin-bottom: -120px;
-  padding-bottom: 40px;
+  min-height: 100%;
 }
 #main-region.with-footer:after {
   content: '';
@@ -252,6 +255,8 @@ body {
   padding: 30px 0;
 }
 /* /Flats app*/
+/* Sub Applications
+-------------------------------------------------- */
 /* Flats app
 -------*/
 /* Flats list
@@ -273,7 +278,7 @@ body {
 .fl-list__items {
   padding-top: 20px;
 }
-.flat {
+.fl-list__item {
   padding: 12px 18px 12px 18px;
   background: #eeeeee url("../img/darkgrain.png");
   -moz-border-radius: 6px;
@@ -284,43 +289,43 @@ body {
   width: 40%;
   float: left;
 }
-.flat:hover {
+.fl-list__item:hover {
   text-decoration: none;
 }
-.flat:after {
+.fl-list__item:after {
   display: block;
   line-height: 0;
   content: '';
   clear: both;
 }
-.flat__header {
+.fl-list__item__header {
   font-size: 1.3em;
   margin-bottom: 10px;
   max-height: 25px;
   max-width: 70%;
   overflow: hidden;
 }
-.flat__header a {
+.fl-list__item__header a {
   color: #444444;
 }
-.flat__header a:hover {
+.fl-list__item__header a:hover {
   text-decoration: underline;
   color: #444444;
 }
-.flat__img-wrap {
+.fl-list__item__img-wrap {
   width: 70%;
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-.flat__img-wrap:hover .flat__img__detail {
+.fl-list__item__img-wrap:hover .fl-list__item__img__detail {
   display: block;
 }
-.flat__img {
+.fl-list__item__img {
   max-height: 100%;
   max-width: 100%;
 }
-.flat__img__detail {
+.fl-list__item__img__detail {
   position: absolute;
   text-align: center;
   height: 32px;
@@ -334,14 +339,14 @@ body {
   padding: 6px 0;
   background: rgba(0, 0, 0, 0.7);
 }
-.flat__info {
+.fl-list__item__info {
   position: absolute;
   text-align: center;
   width: 25%;
   top: 0;
   right: 0;
 }
-.flat__info__block {
+.fl-list__item__info__block {
   width: 100%;
   margin-bottom: 15px;
   -moz-border-radius: 6px;
@@ -349,36 +354,53 @@ body {
   border-radius: 6px;
   background-color: #563d7c;
 }
-.flat__info__block__top {
+.fl-list__item__info__block__top {
   color: #fff;
   font-size: 1.6em;
 }
-.flat__info__block__bot {
+.fl-list__item__info__block__bot {
   color: #fff;
   font-size: .8em;
   border-top: 1px solid #fff;
 }
-.flat__info__block--price {
+.fl-list__item__info__block--price {
   width: 115%;
-  background-color: #9572CC;
+  background-color: #9572cc;
 }
-.flat__info__block--price .flat__info__block__top {
+.fl-list__item__info__block--price .fl-list__item__info__block__top {
   font-size: 2em;
 }
-.smart-filter__title {
+.smart-filter {
   color: #fff;
 }
 .search__title {
   color: #fff;
 }
 /* /Flats list
----------------------------------------------------------------------------------- *//* Examplte page
+---------------------------------------------------------------------------------- *//* Show Flat page
 ---------------------------------------------------------------------------------- */
-.page {
-  width: 70%;
-  margin: 0 auto;
+.flat-single__header {
+  margin: 30px 0 20px 0;
 }
-/* /Example page
+.flat-single__title {
+  font-size: 1.4em;
+}
+.flat-single__img {
+  max-height: 100%;
+  max-width: 100%;
+}
+.flat-single__price {
+  background: #9572cc;
+  padding: 10px 20px;
+  color: #fff;
+  line-height: 60px;
+  font-size: 2em;
+}
+.flat-single__price__text {
+  font-size: .6em;
+  color: #563d7c;
+}
+/* /Show flat page
 ---------------------------------------------------------------------------------- *//* Examplte page
 ---------------------------------------------------------------------------------- */
 .page {
@@ -388,5 +410,8 @@ body {
 /* /Example page
 ---------------------------------------------------------------------------------- *//* /Flats app*/
 /* /Sub applications */
+/* Plugins
+-------------------------------------------------- */
+/* /Plugins */
 /* /Styles
 ---------------------------------------------------------------------------------- */

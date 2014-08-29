@@ -1,5 +1,6 @@
 ﻿define(['FlatsManager',
-		'config/localstorage'], 
+		'config/localstorage',
+        'backbone.paginator'],
 function (FlatsManager) {
     FlatsManager.module('Entities', function (Entities, FlatsManager, Backbone, Marionette, $, _) {
 
@@ -32,12 +33,40 @@ function (FlatsManager) {
         // добавляем миксину для работы с localstorage браузера
 		Entities.configureStorage(Entities.Flat);
 
-        // коллекция flats для управления сущностями flat
-		Entities.FlatsCollection = Backbone.Collection.extend({
-			url: 'flats',
-			model: Entities.Flat,
-			comparator: 'address'
+        // коллекция flats для управления сущностями flat,
+        // используется backbone.paginator
+		Entities.PageableFlatsCollection = Backbone.PageableCollection.extend({
+            url: 'flats',
+            model: Entities.Flat,
+            state: {
+                pageSize: 2,
+                // атрибут модели для сортировки
+                //sortKey: 'updated',
+                // 1 - сорировка в убывающем порядке,
+                // -1 - в вощрастающем,
+                // 0 - сортировки на клиенте не будет
+                order: 0
+            },
+            queryParams: {
+                totalPages: null,
+                totalRecords: null,
+                sortKey: 'sort',
+                queryString: ''
+            },
+            parseState: function (resp, queryParams, state, options) {
+                return { totalRecords: resp.total_count };
+            },
+            parseRecords: function (resp, options) {
+                return resp.items;
+            }
 		});
+
+        // коллекция flats для управления сущностями flat
+        Entities.FlatsCollection = Backbone.Collection.extend({
+        	url: 'flats',
+        	model: Entities.Flat,
+        	comparator: 'address'
+        });
 
         // добавляем миксину для работы с localstorage браузера
 		Entities.configureStorage(Entities.FlatsCollection);
@@ -65,7 +94,7 @@ function (FlatsManager) {
 
 		// API для работы с данными сущности "квартира"
 		var API = {
-            // получить квартиры с сервера
+            // получить все квартиры с сервера
 		    getFlatEntities: function () {
                 // создаем коллекцию для синхронизации данных
 				var flats = new Entities.FlatsCollection();
@@ -94,7 +123,10 @@ function (FlatsManager) {
 						// deferred.done(doneCallbacks) добавляет обработчик, который
 						// будет вызван, когда объект перейдёт в состояние выполнено
 						defer.resolve(data);
-					}
+					},
+                    error: function() {
+                        defer.reject();
+                    }
 				});
 				// deferrer.promise() создаёт проекцию объекта - 
 				// это своеобразная копия объекта, у которой есть
@@ -122,10 +154,10 @@ function (FlatsManager) {
             // получить квартиру с заданным id
 		    getFlatEntity: function (flatId) {
                 // создаем модель с указанным id для синхронизации её с сервером
-				var flat = new Entities.Contact({id: flatId});
+				var flat = new Entities.Flat({id: flatId});
 				var defer = $.Deferred();
 				// при помощи таймера имитируем задержку загрузки с сервера
-				setTimeOut(function () {
+				setTimeout(function () {
                     // fetch для модели обновляет состояние модели данными с сервера
 					flat.fetch({
 						success: function(data){
@@ -136,8 +168,27 @@ function (FlatsManager) {
 						}
 					});
 				}, 2000);
-				return defer.promise();
-			}
+		        return defer.promise();
+		    },
+
+            // получить квартиры с сервера с возможностью пагинации
+            getPageableFlatEntities: function() {
+                var pageableFlats = new Entities.PageableFlatsCollection();
+                var defer = $.Deferred();
+                pageableFlats.fetch({
+                    success: function (data) {
+                        defer.resolve(data);
+                    }
+                });
+                var promise = defer.promise();
+                $.when(promise).done(function (data) {
+                    if (data.length === 0) {
+                        var models = initializeFlats();
+                        pageableFlats.reset(models);
+                    }
+                });
+                return promise;
+            }
 		};
 
         // обрабатываем запросы приложения FlatsManager
@@ -153,6 +204,10 @@ function (FlatsManager) {
 			return new Entities.Flat();
 		});
 
-	});
+		FlatsManager.reqres.setHandler('pageable:flat:entities', function () {
+		    return API.getPageableFlatEntities();
+		});
+
+    });
 	return;
 });

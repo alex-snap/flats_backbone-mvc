@@ -4,36 +4,57 @@ define(['FlatsManager',
         templates['apps/flats/list/list_header'],
         templates['apps/flats/list/list'],
         templates['apps/flats/list/list_item'],
-        templates['apps/flats/list/list_none']],
+        templates['apps/flats/list/list_none'],
+        'backbone.syphon'],
 function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
-	FlatsManager.module('FlatsApp.List.View', function(View, FlatsManager, Backbone, Marionette, $, _){
+    FlatsManager.module('FlatsApp.List.View', function (View, FlatsManager, Backbone, Marionette, $, _) {
+
+        // Layout
+        // ---------------------
 		View.Layout = Marionette.LayoutView.extend({
 		    template: LayoutTpl,
 			regions: {
 				headerRegion    : '.fl-list__header',
-				flatsRegion     : '.fl-list__items'
+				flatsRegion     : '.fl-list__items',
+                footerRegion    : '.fl-list__footer'
 			}
 		});
-		View.Header = Marionette.ItemView.extend({
+
+        // Header
+        // ---------------------
+        View.Header = Marionette.ItemView.extend({
 		    template: HeaderTpl,
-			triggers: {
-				'click button.js-new': 'contact:new',
-				'click button.js-delete-all': 'contacts:delete_all'
-			},
 			events: {
-				'click button.js-filter': 'filterClicked'
+			    'click .js-flats-search': 'submitFilter',
+			    'click .js-smart-filter': 'submitFilter',
+                'change input'          : 'submitFilter'
 			},
 			ui: {
-				criterion: 'input.js-filter-criterion'
+                smartFilterBtn: '.js-smart-filter',
+			    searchString:   '.js-flats-search__criterion'
 			},
-			filterClicked: function(){
-				var criterion = $(this.ui.criterion).val();
-				this.trigger('contacts:filter');
-			},
-			onSetFilterCriterion: function(criterion){
-				$(this.ui.criterion).val(criterion);
-			}
+			submitFilter: function () {
+                var filter = Backbone.Syphon.serialize(this);
+                this.trigger('flats:search', filter);
+            }
+            //searchClicked: function() {
+            //    var query = $(this.ui.searchString).val();
+            //    this.trigger('flats:search', query);
+            //},
+            //smartFilterClicked: function(e) {
+            //    var $btn = $(e.target);
+            //    if (!$btn.hasClass('active')) {
+            //        $(this.ui.smartFilterBtn).removeClass('active');
+            //        $btn.addClass('active');
+            //    }
+            //},
+			//onSetFilterCriterion: function(criterion){
+			//	$(this.ui.criterion).val(criterion);
+			//}
 		});
+
+        // Flat
+        // ---------------------
 		View.Flat = Marionette.ItemView.extend({
 			template: ItemTpl,
 			triggers: {
@@ -42,7 +63,7 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 			},
 			events: {
 				'click': 					'highlightName',
-				'click td a.js-show': 		'showClicked'
+				//'click a': 		'showClicked'
 			},
 		    // задаём метод render в ручную, 
             // чтобы добавить склонения слов в шаблон
@@ -70,12 +91,12 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 			showClicked: function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				this.trigger('contact:show', this.model);
+				this.trigger('flat:show', this.model);
 			},
 			editClicked: function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				this.trigger('contact:edit', this.model);
+				this.trigger('flat:edit', this.model);
 			},
 			// переопределяем метод remove, который вызывается при удалении модели
 			// для плавного скрытия элемента при  удалении
@@ -86,14 +107,19 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 			}
 		});
 
-		var noFlatsView = Marionette.ItemView.extend({
-			template: 	NoneTpl,
-			className: 	'alert'
+        // No flats
+        // ---------------------
+		View.NoFlatsView = Marionette.ItemView.extend({
+		    template:   NoneTpl,
+            tag:        'div',
+			className: 	'alert alert-warning'
 		});
 
+        // Flats
+        // ---------------------
 		View.Flats = Marionette.CompositeView.extend({
 			template: 	ListTpl,
-			emptyView: 	noFlatsView,
+			emptyView: 	View.NoFlatsView,
 			childView: 	View.Flat,
 			childViewContainer: '.container',
 			initialize: function(){
@@ -107,7 +133,10 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 				this.appendHtml = function(collectionView, childView, index){
 					collectionView.$el.prepend(childView.el);
 				}
-			}
+			},
+			onSearchFlats: function (query) {
+                this.collection.fetch({ data: query });
+            }
 		});
 	});
 	return FlatsManager.FlatsApp.List.View;

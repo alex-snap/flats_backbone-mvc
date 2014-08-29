@@ -1,35 +1,26 @@
 define(['FlatsManager',
-		'app/flats/list_view'], 
-function(FlatsManager, View){
-	FlatsManager.module('FlatsApp.List', function(List, FlatsManager, Backbone, Marionette, $, _){
-		List.Controller = {
-		    listFlats: function () {
-		        console.log('flats list controller start');
+		'app/flats/show_view'], 
+function (FlatsManager, View) {
+	FlatsManager.module('FlatsApp.Show', function(Show, FlatsManager, Backbone, Marionette, $, _){
+		Show.Controller = {
+		    showFlat: function (id) {
+		        console.log('show flat is start');
 				require(['entities/flat'], function(){
-					var fetchingFlats = FlatsManager.request('flat:entities');
-					var flatsListLayout = new View.Layout();
-					var flatsListHeader = new View.Header();
-					$.when(fetchingFlats).done(function(flats){
-						var flatsListView = new View.Flats({
-							collection: flats
-						});
-
-						// когда показываем лэйаут, отображаем в регионах нашего
-						// лэйаута view хедера и view списка квартир
-						flatsListLayout.on('show', function(){
-						    flatsListLayout.headerRegion.show(flatsListHeader);
-						    flatsListLayout.flatsRegion.show(flatsListView);
-						});
+				    var showingFlat = FlatsManager.request('flat:entity', id);
+				    $.when(showingFlat).done(function (flat) {
+				        if (flat !== undefined) {
+				            var flatShowView = new View.Flat({
+				                model: flat
+				            });
+                        }
 
 						// отображаем лэйаут со всем содержимым в main region нашего приложения
-						FlatsManager.mainRegion.show(flatsListLayout);
-
-						console.log(flats);
+						FlatsManager.mainRegion.show(flatShowView);
 					});
 				});
 			}
 		}
 	});
 
-	return FlatsManager.FlatsApp.List.Controller;
+	return FlatsManager.FlatsApp.Show.Controller;
 });
