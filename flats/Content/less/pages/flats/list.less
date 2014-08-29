@@ -1,0 +1,120 @@
+/* Flats list
+---------------------------------------------------------------------------------- */
+
+.fl-list {
+    &__header {
+        background: url('../img/bg-city.jpg') center no-repeat;
+        background-size: cover;
+        min-height: 300px;
+        position: relative;
+
+        &__group {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            height: 130px;
+        }
+    }
+    &__items {
+        padding-top: 20px;
+    }
+    &__item {
+        padding: 12px 18px 12px 18px;
+    background: #eee url("../img/darkgrain.png");
+    .border-radius(6px);
+    margin: 15px 5%;
+    position: relative;
+    width: 40%;
+    float: left;
+    &:hover {
+        text-decoration: none;
+    }
+    .no-float;
+    &__header {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        max-height: 25px;
+        max-width: 70%;
+        overflow: hidden;
+        a {
+            color: @color_2;
+            &:hover {
+                text-decoration: underline;
+                color: @color_2;
+            }
+        }
+    }
+    &__img-wrap {
+        width: 70%;
+        position: relative;
+        .inline-block();
+        &:hover {
+            .fl-list__item__img__detail {
+                display: block;
+            }
+        }
+    }
+    &__img {
+        max-height: 100%;
+        max-width: 100%;
+        &__detail {
+            position: absolute;
+            text-align: center;
+            height: 32px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            display: none;
+            width: 100%;
+            color: #fff;
+            padding: 6px 0;
+            background: rgba(0,0,0,.7);
+        }
+    }
+    &__info {
+        position: absolute;
+        text-align: center;
+        width: 25%;
+        top: 0;
+        right: 0;
+        &__block {
+            width: 100%;
+            margin-bottom: 15px;
+            .border-radius(6px);
+            background-color: @color_3;
+            &__top {
+                color: #fff;
+                font-size: 1.6em;
+            }
+            &__bot {
+                color: #fff;
+                font-size: .8em;
+                border-top: 1px solid #fff;
+            }
+            &--price {
+                width: 115%;
+                .fl-list__item__info__block__top {
+                    font-size: 2em;
+                }
+                background-color: @color_4;
+            }
+        }
+    }
+    }
+}
+
+.smart-filter {
+    color: #fff;
+}
+
+.search {
+    &__title {
+        color: #fff;
+    }
+}
+
+/* /Flats list
+---------------------------------------------------------------------------------- */
