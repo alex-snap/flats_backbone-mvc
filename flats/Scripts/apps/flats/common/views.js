@@ -7,7 +7,8 @@ function(FlatsManager, FlatEditTpl){
 		    template: FlatEditTpl,
 		    ui: {
 		        uploadImgContainer  :   '.js-upload-container',
-		        submitBtn           :   '.js-submit'
+		        submitBtn           :   '.js-submit',
+                imagesIds           :   '.js-images-list'
             },
 			events: {
 			    'click .js-submit'  :   'submitClicked',
@@ -62,10 +63,12 @@ function(FlatsManager, FlatEditTpl){
 			            onBeforeUpload: function (evt, uiEvt) {
 			                $(_this.ui.submitBtn).prop('disabled', true);
 			                imgCount = uiEvt.files.length;
+			                uploadedCount = 0;
 			            },
 			            onFileComplete: function (evt, uiEvt) {
-			                if (uiEvt.result.success) {
+			                if (uiEvt.result != undefined) {
 			                    uploadedCount++;
+			                    $(_this.ui.imagesIds).val($(_this.ui.imagesIds).val() + ',' + uiEvt.result);
 			                    if (imgCount === uploadedCount) {
 			                        $(_this.ui.submitBtn).prop('disabled', false);
 			                    }
