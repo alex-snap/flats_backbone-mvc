@@ -39,7 +39,7 @@ function(FlatsManager, FlatEditTpl){
 			    function init() {
 			        var _this = this;
 			        $(_this.ui.uploadImgContainer).fileapi({
-			            url: '/files/img',
+			            url: '/files/image',
 			            accept: 'image/*',
 			            multiple: true,
 			            maxFiles: 10,

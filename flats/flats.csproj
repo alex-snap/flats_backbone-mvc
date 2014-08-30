@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\FlatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,12 +182,19 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="App_Data\Flats.mdf" />
+    <Content Include="App_Data\Flats_log.ldf">
+      <DependentUpon>Flats.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\bg-city.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\flats\common\views.js" />
     <Content Include="Scripts\apps\flats\edit\edit_view.js" />
     <Content Include="Scripts\apps\flats\flats_app.js" />
+    <Content Include="Scripts\apps\flats\new\new_controller.js" />
+    <Content Include="Scripts\apps\flats\new\new_view.js" />
+    <Content Include="Scripts\apps\flats\new\templates\flats-new-layout.tpl.html" />
     <Content Include="Scripts\apps\flats\show\show_controller.js" />
     <Content Include="Scripts\apps\flats\show\show_view.js" />
     <Content Include="Scripts\apps\flats\show\templates\flats-show-item.tpl.html" />
@@ -256,7 +264,6 @@
     <Content Include="Views\Flats\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Storage\imgs\" />
   </ItemGroup>
   <ItemGroup>
