@@ -1,5 +1,7 @@
 ﻿<div class="container">
     <div class="row">
+        <a href="#flats/new" class="btn btn-info">Добавить квартиру</a>        
+        <% if (!hideFilter) { %>
         <div class="fl-list__header__group">
             <form>
                 <div class="col-md-4 col-md-offset-2 text-center">
@@ -15,8 +17,8 @@
                             <input name="SmartFilter" type="radio" value="NearCenter" />
                             <label>Ближе к центру</label>
                             <!--<button class="btn btn-info js-smart-filter" data-filter="MinPrice">Меньше цена</button>
-                        <button class="btn btn-info js-smart-filter" data-filter="MaxComfort">Больше комфорта</button>
-                        <button class="btn btn-info js-smart-filter" data-filter="NearCenter">Ближе к центру</button>-->
+                                <button class="btn btn-info js-smart-filter" data-filter="MaxComfort">Больше комфорта</button>
+                                <button class="btn btn-info js-smart-filter" data-filter="NearCenter">Ближе к центру</button>-->
                         </div>
                     </div>
                 </div>
@@ -35,5 +37,6 @@
                 </div>
             </form>
         </div>
+        <% } %>
     </div>
 </div>

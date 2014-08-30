@@ -239,6 +239,7 @@ body {
 }
 #main-region.with-footer {
   margin-bottom: -120px;
+  padding-bottom: 60px;
   min-height: 100%;
 }
 #main-region.with-footer:after {
@@ -408,8 +409,68 @@ body {
   margin: 0 auto;
 }
 /* /Example page
+---------------------------------------------------------------------------------- *//* New flat page
+---------------------------------------------------------------------------------- */
+.fl-new {
+  padding-top: 60px;
+}
+/* /New flat page
 ---------------------------------------------------------------------------------- *//* /Flats app*/
 /* /Sub applications */
+/* Components
+-------------------------------------------------- */
+/* Image uploader
+---------------------------------------------------------------------------------- */
+.img-upload__list {
+  padding: 20px 0;
+}
+.img-upload__thumb {
+  position: relative;
+  float: left;
+  height: 90px;
+  width: 90px;
+  margin: 0 5px 5px 0;
+}
+.img-upload__thumb canvas {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.img-upload__thumb__del {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #fff;
+  z-index: 1;
+  line-height: 15px;
+}
+.img-upload__thumb__progress {
+  position: absolute;
+  width: 90%;
+  margin-left: 5%;
+  height: 8px;
+  bottom: 6%;
+  background-color: #3b3b3b;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.img-upload__thumb__progress .bar {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 100%;
+  width: 0;
+  background-color: #39b54a;
+}
+.img-upload__thumb__complete {
+  text-align: center;
+}
+/* /Image uploader
+---------------------------------------------------------------------------------- *//* /Components */
 /* Plugins
 -------------------------------------------------- */
 /* /Plugins */

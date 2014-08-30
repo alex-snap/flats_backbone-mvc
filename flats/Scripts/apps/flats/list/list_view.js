@@ -36,6 +36,9 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 			submitFilter: function () {
                 var filter = Backbone.Syphon.serialize(this);
                 this.trigger('flats:search', filter);
+			},
+			render: function () {
+                this.$el.html(this.template({ hideFilter: this.options.filterUiHide }));
             }
             //searchClicked: function() {
             //    var query = $(this.ui.searchString).val();
@@ -62,7 +65,7 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 				'click button.js-delete': 	'contact:delete'
 			},
 			events: {
-				'click': 					'highlightName',
+                
 				//'click a': 		'showClicked'
 			},
 		    // задаём метод render в ручную, 

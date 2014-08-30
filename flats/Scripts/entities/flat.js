@@ -13,11 +13,11 @@ function (FlatsManager) {
 				price   : '',
 				rooms   : '',
 				sleeper: '',
-				description: '',
-                coords: {
-                    lon: '',
-                    lat: ''
-                }
+				description: ''
+                //coords: {
+                //    lon: '',
+                //    lat: ''
+                //}
 			},
 			validate: function(attrs, options){
 			    var errors = {};
@@ -31,7 +31,7 @@ function (FlatsManager) {
 		});
 
         // добавляем миксину для работы с localstorage браузера
-		Entities.configureStorage(Entities.Flat);
+		//Entities.configureStorage(Entities.Flat);
 
         // коллекция flats для управления сущностями flat,
         // используется backbone.paginator
@@ -69,7 +69,7 @@ function (FlatsManager) {
         });
 
         // добавляем миксину для работы с localstorage браузера
-		Entities.configureStorage(Entities.FlatsCollection);
+		//Entities.configureStorage(Entities.FlatsCollection);
 
 		// функция создает, сохраняет и возвращает хардкод моделей квартир
 		var initializeFlats = function () {

@@ -9,8 +9,8 @@ function(FlatsManager, View, PaginatorView){
 				require(['entities/flat'], function(){
 				  var fetchingFlats = FlatsManager.request('flat:entities');
 					var flatsListLayout = new View.Layout();
-					var flatsListHeader = new View.Header();
-					$.when(fetchingFlats).done(function(flats){
+				    $.when(fetchingFlats).done(function (flats) {
+				        var flatsListHeader = new View.Header();
 					    var flatsListView = new View.Flats({
 							collection: flats
 						});
@@ -27,12 +27,21 @@ function(FlatsManager, View, PaginatorView){
 					        flatsListView.triggerMethod('search:flats', query);
 						});
 
-						// отображаем лэйаут со всем содержимым в main region нашего приложения
+					    // отображаем лэйаут со всем содержимым в main region нашего приложения
 						FlatsManager.mainRegion.show(flatsListLayout);
 
-					}).fail(function () {
+				    }).fail(function () {
+				        var flatsListHeader = new View.Header({
+				            filterUiHide: true
+				        });
 					    var emptyView = new View.NoFlatsView();
-					    FlatsManager.mainRegion.show(emptyView);
+					    flatsListLayout.on('show', function () {
+					        flatsListLayout.headerRegion.show(flatsListHeader);
+					        flatsListLayout.flatsRegion.show(emptyView);
+					    });
+
+					    // отображаем лэйаут со всем содержимым в main region нашего приложения
+					    FlatsManager.mainRegion.show(flatsListLayout);
 					});
 		        });
 

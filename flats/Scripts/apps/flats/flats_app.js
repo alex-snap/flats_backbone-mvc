@@ -3,9 +3,10 @@ function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
 	    FlatsApp.Router = Marionette.AppRouter.extend({
 			appRoutes: {
-			    'flats': 'listFlats',
-                'flats/': 'listFlats',
-                'flats/item/:id': 'showFlat'
+			    'flats'         :   'listFlats',
+                'flats/'        :   'listFlats',
+                'flats/item/:id':   'showFlat',
+                'flats/new'     :   'newFlat'
 			}
 	    });
 
@@ -21,6 +22,11 @@ function(FlatsManager){
                 require(['app/flats/show_controller'], function(ShowController) {
                     ShowController.showFlat(id);
                 });
+            },
+            newFlat: function() {
+                require(['app/flats/new_controller'], function(NewController) {
+                    NewController.newFlat();
+                });
             }
 		};
 
@@ -33,6 +39,9 @@ function(FlatsManager){
 	    FlatsManager.on('flat:show', function(id) {
 	        FlatsManager.navigate('flats/' + id);
 	    });
+        FlatsManager.on('flat:new', function() {
+            FlatsManager.navigate('flats/new');
+        });
 		FlatsManager.addInitializer(function(){
 		    new FlatsApp.Router({
 				controller: API
