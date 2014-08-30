@@ -112,3 +112,6 @@ D:\flats\flats_backbone-mvc\flats\bin\ru-ru\MsieJavaScriptEngine.resources.dll
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.csprojResolveAssemblyReference.cache
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.dll
 D:\flats\flats_backbone-mvc\flats\obj\Debug\flats.pdb
+D:\Projects\flats_backbone-mvc\flats\bin\AutoMapper.Net4.dll
+D:\Projects\flats_backbone-mvc\flats\bin\AutoMapper.dll
+D:\Projects\flats_backbone-mvc\flats\bin\AutoMapper.xml

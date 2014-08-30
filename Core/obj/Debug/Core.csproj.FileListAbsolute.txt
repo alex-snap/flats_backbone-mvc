@@ -40,10 +40,10 @@ D:\flats\flats_backbone-mvc\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.V8.res
 D:\flats\flats_backbone-mvc\Core\bin\Debug\ru-ru\MsieJavaScriptEngine.resources.dll
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.dll
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.pdb
-D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resources
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resources
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.SleeperFieldInFlat.resources

@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201408292228559_ImgsFlatIdNull.Designer.cs">
       <DependentUpon>201408292228559_ImgsFlatIdNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408301957023_SleeperFieldInFlat.cs" />
+    <Compile Include="Migrations\201408301957023_SleeperFieldInFlat.Designer.cs">
+      <DependentUpon>201408301957023_SleeperFieldInFlat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,6 +106,12 @@
     <EmbeddedResource Include="Migrations\201408292228559_ImgsFlatIdNull.resx">
       <DependentUpon>201408292228559_ImgsFlatIdNull.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408301957023_SleeperFieldInFlat.resx">
+      <DependentUpon>201408301957023_SleeperFieldInFlat.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
