@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="Content/css/styles.css" />
 </head>
 <body>
-    <input type="hidden" id="token" value="@Html.AntiForgeryToken()" />
+    @Html.AntiForgeryToken()
     <header id="header-region"></header>
     <section id="main-region" class="with-footer"></section>
     <footer id="footer-region">
