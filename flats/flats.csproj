@@ -182,6 +182,10 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="App_Data\Flats.mdf" />
+    <Content Include="App_Data\Flats_log.ldf">
+      <DependentUpon>Flats.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\bg-city.jpg" />
     <Content Include="Global.asax" />
@@ -266,7 +270,7 @@
     <Content Include="Views\Flats\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\TestImgs\" />
     <Folder Include="Storage\imgs\" />
   </ItemGroup>
   <ItemGroup>
