@@ -44,3 +44,6 @@ D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReferenc
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resources
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
+D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resources
+D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
+D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
