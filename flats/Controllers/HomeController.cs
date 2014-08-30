@@ -16,7 +16,7 @@ namespace flats.Controllers
 
         public ActionResult Index()
         {
-            var files = Directory.GetFiles(Server.MapPath("App_Data/TestImgs"));
+            //var files = Directory.GetFiles(Server.MapPath("App_Data/TestImgs"));
             using (var db = new EFDbContext())
             {
                 Flat flat = new Flat()
