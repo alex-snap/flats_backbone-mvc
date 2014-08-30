@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201408301957023_SleeperFieldInFlat.Designer.cs">
       <DependentUpon>201408301957023_SleeperFieldInFlat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408302032416_RenameRoomsFieldInFlats.cs" />
+    <Compile Include="Migrations\201408302032416_RenameRoomsFieldInFlats.Designer.cs">
+      <DependentUpon>201408302032416_RenameRoomsFieldInFlats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408301957023_SleeperFieldInFlat.resx">
       <DependentUpon>201408301957023_SleeperFieldInFlat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408302032416_RenameRoomsFieldInFlats.resx">
+      <DependentUpon>201408302032416_RenameRoomsFieldInFlats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

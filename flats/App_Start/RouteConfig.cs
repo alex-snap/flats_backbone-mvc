@@ -18,6 +18,12 @@ namespace flats
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Flat",
+                url: "flats/{id}",
+                defaults: new { controller = "Flats", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

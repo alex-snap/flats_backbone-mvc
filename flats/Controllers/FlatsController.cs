@@ -17,27 +17,38 @@ namespace flats.Controllers
         //
         // GET: /Flats/
 
-        public JsonResult Add(AddFlatModel model)
+        public JsonResult Index(int? id, AddFlatModel model)
         {
-            using (var db = new EFDbContext())
+            switch (Request.HttpMethod)
             {
-                Mapper.CreateMap(typeof(AddFlatModel), typeof(Flat));
-                var flat = new Flat();
-                db.Flats.Add(flat);
-                Mapper.Map(model, flat);
-                var imgsIds = model.ImageList.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).ToList();
-                foreach (var stringImgsId in imgsIds)
-                {
-                    int imgId = int.Parse(stringImgsId);
-                    var img = db.Images.SingleOrDefault(i => i.ID == imgId);
-                    if (img != null)
+                case "GET":
+                    break;
+                case "POST":
+                    using (var db = new EFDbContext())
                     {
-                        img.Flat = flat;
+                        Mapper.CreateMap(typeof(AddFlatModel), typeof(Flat));
+                        var flat = new Flat()
+                        {
+                            Created = DateTime.Now,
+                            Deleted = false,
+                        };
+                        db.Flats.Add(flat);
+                        Mapper.Map(model, flat);
+                        var imgsIds = model.ImagesList.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                        foreach (var stringImgsId in imgsIds)
+                        {
+                            int imgId = int.Parse(stringImgsId);
+                            var img = db.Images.SingleOrDefault(i => i.ID == imgId);
+                            if (img != null)
+                            {
+                                img.Flat = flat;
+                            }
+                        }
+                        db.SaveChanges();
                     }
-                }
-                db.SaveChanges();
+                    return Json(new { success = true});
             }
-            return Json("Success");
+            return null;
         }
         
     }

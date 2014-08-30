@@ -12,6 +12,6 @@ namespace flats.Models
         public int Rooms { get; set; }
         public int Sleeper { get; set; }
 
-        public string ImageList { get; set; }
+        public string ImagesList { get; set; }
     }
 }

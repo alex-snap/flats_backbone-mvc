@@ -47,3 +47,5 @@ D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resourc
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.SleeperFieldInFlat.resources
+D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.RenameRoomsFieldInFlats.resources
