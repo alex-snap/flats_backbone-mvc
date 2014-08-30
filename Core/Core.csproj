@@ -66,6 +66,15 @@
     <Compile Include="DB\Entities\FlatBusyDates.cs" />
     <Compile Include="DB\Entities\Imgs.cs" />
     <Compile Include="DB\FlatDbContext.cs" />
+    <Compile Include="Migrations\201407241905124_InitialCreate.cs" />
+    <Compile Include="Migrations\201407241905124_InitialCreate.Designer.cs">
+      <DependentUpon>201407241905124_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408292228559_ImgsFlatIdNull.cs" />
+    <Compile Include="Migrations\201408292228559_ImgsFlatIdNull.Designer.cs">
+      <DependentUpon>201408292228559_ImgsFlatIdNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +94,14 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201407241905124_InitialCreate.resx">
+      <DependentUpon>201407241905124_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408292228559_ImgsFlatIdNull.resx">
+      <DependentUpon>201408292228559_ImgsFlatIdNull.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
