@@ -182,13 +182,10 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="App_Data\Flats.mdf" />
-    <Content Include="App_Data\Flats_log.ldf">
-      <DependentUpon>Flats.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\bg-city.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\apps\flats\common\templates\flat-edit.tpl.html" />
     <Content Include="Scripts\apps\flats\common\views.js" />
     <Content Include="Scripts\apps\flats\edit\edit_view.js" />
     <Content Include="Scripts\apps\flats\flats_app.js" />
@@ -221,6 +218,11 @@
     <Content Include="Scripts\libs\backbone\backbone.syphon.js" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.css" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.min.js" />
+    <Content Include="Scripts\libs\fileapi\FileAPI.exif.js" />
+    <Content Include="Scripts\libs\fileapi\FileAPI.min.js" />
+    <Content Include="Scripts\libs\fileapi\jquery.fileapi.js" />
+    <Content Include="Scripts\libs\fileapi\jquery.fileapi.min.js" />
+    <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.1.1.min.js" />
     <Content Include="Scripts\libs\jquery\jquery-ui.min.js" />
     <Content Include="Scripts\libs\json\json2.min.js" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Flats\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Storage\imgs\" />
   </ItemGroup>
   <ItemGroup>

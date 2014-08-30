@@ -15,7 +15,7 @@ namespace flats.Controllers
         // GET: /File/
 
         [HttpPost]
-        public ActionResult Image(HttpPostedFileBase img)
+        public ActionResult Image(HttpPostedFileBase UploaderHelper)
         {
             using (var db = new EFDbContext())
             {
@@ -26,10 +26,13 @@ namespace flats.Controllers
                 };
                 db.Images.Add(image);
                 db.SaveChanges();
-                string fileExtension = Path.GetExtension(img.FileName);
-                string filePath = Path.Combine(Server.MapPath("Storage/imgs/"), image.ID + fileExtension);
-                using (var stream = (MemoryStream)img.InputStream)
+                string fileExtension = Path.GetExtension(UploaderHelper.FileName);
+                string filePath = Path.Combine(Server.MapPath("~/Storage/imgs/"), image.ID + fileExtension);
+                using (var stream = new MemoryStream())
+                {
+                    UploaderHelper.InputStream.CopyTo(stream);
                     System.IO.File.WriteAllBytes(filePath, stream.ToArray());
+                }
                 image.Path = filePath;
                 db.SaveChanges();
                 return Content(image.ID.ToString());
