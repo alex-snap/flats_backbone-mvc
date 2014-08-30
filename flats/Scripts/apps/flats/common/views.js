@@ -64,6 +64,7 @@ function(FlatsManager, FlatEditTpl){
 			                imgCount = uiEvt.files.length;
 			            },
 			            onFileComplete: function (evt, uiEvt) {
+			                debugger;
 			                if (uiEvt.result.success) {
 			                    uploadedCount++;
 			                    if (imgCount === uploadedCount) {
