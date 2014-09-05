@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using Core.Services;
 using Core.Services.Implementations;
@@ -32,6 +33,7 @@ namespace flats
         {
             _kernel.Bind<IFlatService>().To<FlatService>().InRequestScope();
             _kernel.Bind<IFileService>().To<FileService>().InRequestScope();
+            _kernel.Bind<HttpContext>().ToConstant(HttpContext.Current).WhenParentNamed("Service").InRequestScope();
         }
 
     }

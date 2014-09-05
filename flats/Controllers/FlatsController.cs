@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using AutoMapper;
 using Core.Models;
@@ -22,18 +23,27 @@ namespace flats.Controllers
         }
 
         [HttpPost]
-        public JsonResult Index(int? id, AddFlatModel model)
+        public JsonResult Add(AddFlatModel model)
         {
             _flatService.Add(model);
             return Json(new { Success = true });
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public JsonResult All()
         {
-            return View();
+            return Json(_flatService.GetAll(), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public JsonResult Get(int id)
+        {
+            return Json(_flatService.Get(id), JsonRequestBehavior.AllowGet);
+        }
         
+        public JsonResult Update(int id)
+        {
+            return Json(_flatService.Get(id), JsonRequestBehavior.AllowGet);
+        }
     }
 }
