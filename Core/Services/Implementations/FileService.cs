@@ -27,7 +27,7 @@ namespace Core.Services.Implementations
                 db.Images.Add(image);
                 db.SaveChanges();
                 string fileExtension = Path.GetExtension(fileName);
-                string filePath = Path.Combine("Storage/imgs/", image.ID + "." + fileExtension);
+                string filePath = Path.Combine("Storage/imgs/", image.ID + fileExtension);
                 using (var stream = new MemoryStream())
                 {
                     imageStream.CopyTo(stream);

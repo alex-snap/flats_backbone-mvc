@@ -10,15 +10,15 @@ namespace flats
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "FlatAdd",
-                url: "flats",
-                defaults: new { controller = "Flats", action = "Add", httpMethod = new HttpMethodConstraint("POST") }
-            );
-
-            routes.MapRoute(
                 name: "Flats",
                 url: "flats",
                 defaults: new { controller = "Flats", action = "All", httpMethod = new HttpMethodConstraint("GET") }
+            );
+
+            routes.MapRoute(
+                name: "FlatAdd",
+                url: "flats",
+                defaults: new { controller = "Flats", action = "Add", httpMethod = new HttpMethodConstraint("POST") }
             );
 
             routes.MapRoute(
@@ -26,6 +26,12 @@ namespace flats
                 url: "flats/{id}",
                 defaults: new { controller = "Flats", action = "Get", 
                     httpMethod = new HttpMethodConstraint("GET") }
+            );
+            routes.MapRoute(
+                name: "UpdateFlat",
+                url: "flats/{id}",
+                defaults: new { controller = "Flats", action = "Update", 
+                    httpMethod = new HttpMethodConstraint("PUT") }
             );
             routes.MapRoute(
                 name: "Default",

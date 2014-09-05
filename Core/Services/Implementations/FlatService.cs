@@ -22,14 +22,18 @@ namespace Core.Services.Implementations
                 };
                 db.Flats.Add(flat);
                 Mapper.Map(flatModel, flat);
-                var imgsIds = flatModel.ImagesList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                foreach (var stringImgsId in imgsIds)
+                if (flatModel.ImagesList != null)
                 {
-                    int imgId = int.Parse(stringImgsId);
-                    var img = db.Images.SingleOrDefault(i => i.ID == imgId);
-                    if (img != null)
+                    var imgsIds =
+                        flatModel.ImagesList.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    foreach (var stringImgsId in imgsIds)
                     {
-                        img.Flat = flat;
+                        int imgId = int.Parse(stringImgsId);
+                        var img = db.Images.SingleOrDefault(i => i.ID == imgId);
+                        if (img != null)
+                        {
+                            img.Flat = flat;
+                        }
                     }
                 }
                 db.SaveChanges();
@@ -79,8 +83,8 @@ namespace Core.Services.Implementations
             using (EFDbContext db = new EFDbContext())
             {
                 var flat = db.Flats.SingleOrDefault(f => f.ID == model.ID);
-                if (flat == null)
-                    return "ERROR";
+                //if (flat == null)
+                //    return "ERROR";
                 Mapper.CreateMap(model.GetType(), flat.GetType());
                 Mapper.Map(model, flat);
                 //TODO здесь он может поменяет id
