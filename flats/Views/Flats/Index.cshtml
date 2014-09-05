@@ -1,0 +1,26 @@
+﻿@*@model Core.Models.AddFlatModel*@
+
+@{
+    ViewBag.Title = "Add";
+}
+
+@*@using (Html.BeginForm("Add", "Flats", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    <input type="text" name="rooms"/>
+    @Html.TextBoxFor(m => m.Price, new { name = "price"} )
+    @Html.TextBoxFor(m => m.Description, new { name = "description"} )
+    for (int i = 0; i < 9; i++)
+    {
+        <input type="file" name="files[@i]"/>
+    }
+    <input type="submit" value="Отправить"/>
+}*@
+
+<html>
+<body>
+<h2>Add</h2>
+    <video width="480" height="320" controls="controls" autoplay="autoplay">
+        <source src="/Test/Video" type="video/webm">
+    </video>
+</body>
+</html>
