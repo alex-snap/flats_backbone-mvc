@@ -200,7 +200,7 @@ function (FlatsManager) {
 			return API.getFlatEntity(id);
 		});
 
-		FlatsManager.reqres.setHandler('flat:entity:new', function (id) {
+		FlatsManager.reqres.setHandler('flat:entity:new', function () {
 			return new Entities.Flat();
 		});
 
@@ -210,4 +210,9 @@ function (FlatsManager) {
 
     });
 	return;
+});
+
+
+var myModel = Backbone.Model.extend({
+
 });

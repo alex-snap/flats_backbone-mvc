@@ -1,10 +1,15 @@
 define(['FlatsManager',
         'utils',
-        templates['apps/flats/list/list_layout'],
-        templates['apps/flats/list/list_header'],
-        templates['apps/flats/list/list'],
-        templates['apps/flats/list/list_item'],
-        templates['apps/flats/list/list_none'],
+        'tpl!apps/flats/list/templates/flats-list-layout.tpl.html',
+        'tpl!apps/flats/list/templates/flats-list-header.tpl.html',
+        'tpl!apps/flats/list/templates/flats-list.tpl.html',
+        'tpl!apps/flats/list/templates/flats-list-item.tpl.html',
+        'tpl!apps/flats/list/templates/flats-list-none.tpl.html',
+        //templates['apps/flats/list/list_layout'],
+        //templates['apps/flats/list/list_header'],
+        //templates['apps/flats/list/list'],
+        //templates['apps/flats/list/list_item'],
+        //templates['apps/flats/list/list_none'],
         'backbone.syphon'],
 function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
     FlatsManager.module('FlatsApp.List.View', function (View, FlatsManager, Backbone, Marionette, $, _) {
@@ -61,8 +66,8 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 		View.Flat = Marionette.ItemView.extend({
 			template: ItemTpl,
 			triggers: {
-				'click td a.js-edit'	: 	'contact:edit',
-				'click button.js-delete': 	'contact:delete'
+				'click td a.js-edit'	: 	'flat:edit',
+				'click button.js-delete': 	'flat:delete'
 			},
 			events: {
                 

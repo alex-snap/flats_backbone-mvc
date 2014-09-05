@@ -42,8 +42,15 @@ function(FlatsManager, View, PaginatorView){
 
 					    // отображаем лэйаут со всем содержимым в main region нашего приложения
 					    FlatsManager.mainRegion.show(flatsListLayout);
-					});
-		        });
+				    });
+
+				    // url model test
+				    var oneFlat = FlatsManager.request('flat:entity:new');
+				    oneFlat.url = 'opaopaopapa';
+				    oneFlat.set('id', 2);
+				    oneFlat.fetch();
+				});
+
 
 		        //console.log('flats paginating start');
 		        //require(['entities/flat'], function() {

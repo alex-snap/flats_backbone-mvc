@@ -1,5 +1,6 @@
 ﻿define(['marionette',
-        templates['module/paginator']
+        'tpl!common/modules/collection-paginator/collection-paginator.tpl.html'
+        //templates['module/paginator']
 ],
 function (Marionette, PaginatorTpl) {
 

@@ -1,5 +1,7 @@
 define(['FlatsManager',
-        templates['apps/flats/common/edit'],
+        'tpl!apps/flats/common/templates/flat-edit.tpl.html',
+        //templates['apps/flats/common/edit'],
+        'jquery.fileapi',
 		'backbone.syphon'],
 function(FlatsManager, FlatEditTpl){
 	FlatsManager.module('ContactsApp.Common.Views', function(Views, FlatsManager, Backbone, Marionette, $, _){

@@ -1,7 +1,8 @@
 define(['FlatsManager',
 		'app/flats/common/views',
-        templates['apps/flats/new/new_layout'],
-        'jquery.fileapi'],
+        'tpl!apps/flats/new/templates/flats-new-layout.tpl.html',
+        //templates['apps/flats/new/new_layout']
+],
 function(FlatsManager, CommonViews, LayoutTpl){
     FlatsManager.module('ContactsApp.New.View', function (View, FlatsManager, Backbone, Marionette, $, _) {
         View.Layout = Marionette.LayoutView.extend({
