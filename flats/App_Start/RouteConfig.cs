@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace flats
@@ -23,6 +19,11 @@ namespace flats
                 name: "Flat",
                 url: "flats/{id}",
                 defaults: new { controller = "Flats", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Video",
+                url: "Test/Video",
+                defaults: new { controller = "Test", action = "Video" }
             );
         }
     }
