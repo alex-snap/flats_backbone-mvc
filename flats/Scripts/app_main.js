@@ -21,10 +21,10 @@ function(Marionette) {
         return Backbone.history.fragment;
     };
 
-    FlatsManager.on('start', function() {
+    FlatsManager.on('start', function () {
         if (Backbone.history) {
             // создание роутов дочернего приложения FlatsApp до инициализации системы роутов Backbone
-            require(['app/flats'], function(){
+            require(['app/flats'], function () {
                 Backbone.history.start();
                 if (FlatsManager.getCurrenRoute() === '') {
                     // запуск подприложения flats

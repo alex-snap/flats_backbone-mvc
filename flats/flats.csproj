@@ -249,6 +249,7 @@
     <Content Include="Scripts\apps\flats\list\templates\flats-list.tpl.html" />
     <Content Include="Scripts\apps\flats\list\templates\flats-list-header.tpl.html" />
     <Content Include="Scripts\apps\flats\list\templates\flats-list-layout.tpl.html" />
+    <Content Include="Scripts\build.js" />
     <Content Include="Scripts\app_main.js" />
     <Content Include="Scripts\common\config\marionette\regions\dialog.js" />
     <Content Include="Scripts\common\config\storage\localstorage.js" />
@@ -259,6 +260,7 @@
     <Content Include="Scripts\common\modules\collection-paginator\collection-paginator.tpl.html" />
     <Content Include="Scripts\common\utils\utils.js" />
     <Content Include="Scripts\entities\flat.js" />
+    <Content Include="Scripts\libs\almond\almond.js" />
     <Content Include="Scripts\libs\backbone\backbone.js" />
     <Content Include="Scripts\libs\backbone\backbone.localStorage.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.min.js" />
@@ -283,6 +285,7 @@
     <Content Include="Scripts\libs\underscore\underscore-tpl.js" />
     <Content Include="Scripts\libs\underscore\underscore.js" />
     <Content Include="Scripts\libs\underscore\underscore.min.js" />
+    <Content Include="Scripts\require_main.built.js" />
     <Content Include="Scripts\require_main.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

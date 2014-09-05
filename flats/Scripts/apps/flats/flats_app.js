@@ -2,7 +2,7 @@ define(['FlatsManager'],
 function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
 	    FlatsApp.Router = Marionette.AppRouter.extend({
-			appRoutes: {
+	        appRoutes: {
 			    'flats'         :   'listFlats',
                 'flats/'        :   'listFlats',
                 'flats/item/:id':   'showFlat',
@@ -13,7 +13,7 @@ function(FlatsManager){
 	    // API, которое используется в качестве контроллера
         // для роутера подприложения FlatsApp
 		var API = {
-			listFlats: function(criterion){
+		    listFlats: function (criterion) {
 			    require(['app/flats/list_controller'], function (ListController) {
 					ListController.listFlats(criterion);
 				});
@@ -33,16 +33,19 @@ function(FlatsManager){
 	    // добавляем обработчики событий на главном приложении
 	    // для того, чтобы иметь возможность вызвать нужный контроллер
         // простой командой
-		FlatsManager.on('flats:list', function(){
-			FlatsManager.navigate('flats');
+		FlatsManager.on('flats:list', function () {
+		    FlatsManager.navigate('flats');
+		    API.listFlats();
 		});
 	    FlatsManager.on('flat:show', function(id) {
 	        FlatsManager.navigate('flats/' + id);
+	        API.showFlat(id);
 	    });
         FlatsManager.on('flat:new', function() {
             FlatsManager.navigate('flats/new');
+            API.newFlat();
         });
-		FlatsManager.addInitializer(function(){
+        FlatsManager.addInitializer(function () {
 		    new FlatsApp.Router({
 				controller: API
 			});
