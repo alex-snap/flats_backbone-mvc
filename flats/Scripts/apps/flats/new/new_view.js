@@ -1,6 +1,6 @@
 define(['FlatsManager',
 		'app/flats/common/views',
-        'tpl!apps/flats/new/templates/flats-new-layout.tpl.html',
+        'tpl!apps/flats/new/templates/flats-new-layout.tpl.html'
         //templates['apps/flats/new/new_layout']
 ],
 function(FlatsManager, CommonViews, LayoutTpl){

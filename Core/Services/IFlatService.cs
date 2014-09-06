@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Core.Models;
 
 namespace Core.Services
@@ -7,6 +8,10 @@ namespace Core.Services
     {
         void Add(AddFlatModel flat);
 
-        void View();
+        IEnumerable<FlatPreviewModel> GetAll();
+
+        FlatViewModel Get(int id);
+
+        string Update(AddFlatModelTemp flat);
     }
 }

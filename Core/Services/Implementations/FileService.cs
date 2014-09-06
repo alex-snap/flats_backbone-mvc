@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using DAL;
 using DAL.Entities;
 
@@ -7,6 +8,13 @@ namespace Core.Services.Implementations
 {
     public class FileService: IFileService
     {
+        private readonly HttpContext _httpContext;
+
+        public FileService(HttpContext httpContext)
+        {
+            _httpContext = httpContext;
+        }
+
         public int SaveImage(Stream imageStream, string fileName)
         {
             using (var db = new EFDbContext())
@@ -23,7 +31,8 @@ namespace Core.Services.Implementations
                 using (var stream = new MemoryStream())
                 {
                     imageStream.CopyTo(stream);
-                    File.WriteAllBytes(filePath, stream.ToArray());
+                    File.WriteAllBytes(Path.Combine(_httpContext.Server.MapPath("~"),filePath), 
+                        stream.ToArray());
                 }
                 image.Path = filePath;
                 db.SaveChanges();
