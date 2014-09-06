@@ -232,6 +232,7 @@
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\bg-city.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\apps\flats\navbar\templates\flats-navbar.tpl.html" />
     <Content Include="Scripts\apps\flats\common\templates\flat-edit.tpl.html" />
     <Content Include="Scripts\apps\flats\common\views.js" />
     <Content Include="Scripts\apps\flats\edit\edit_view.js" />
@@ -239,6 +240,8 @@
     <Content Include="Scripts\apps\flats\new\new_controller.js" />
     <Content Include="Scripts\apps\flats\new\new_view.js" />
     <Content Include="Scripts\apps\flats\new\templates\flats-new-layout.tpl.html" />
+    <Content Include="Scripts\apps\flats\navbar\navbar_controller.js" />
+    <Content Include="Scripts\apps\flats\navbar\navbar_view.js" />
     <Content Include="Scripts\apps\flats\show\show_controller.js" />
     <Content Include="Scripts\apps\flats\show\show_view.js" />
     <Content Include="Scripts\apps\flats\show\templates\flats-show-item.tpl.html" />
@@ -249,6 +252,8 @@
     <Content Include="Scripts\apps\flats\list\templates\flats-list.tpl.html" />
     <Content Include="Scripts\apps\flats\list\templates\flats-list-header.tpl.html" />
     <Content Include="Scripts\apps\flats\list\templates\flats-list-layout.tpl.html" />
+    <Content Include="Scripts\apps\test\one\one_controller.js" />
+    <Content Include="Scripts\apps\test\test_app.js" />
     <Content Include="Scripts\build.js" />
     <Content Include="Scripts\app_main.js" />
     <Content Include="Scripts\common\config\marionette\regions\dialog.js" />

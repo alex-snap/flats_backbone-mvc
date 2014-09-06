@@ -1,6 +1,17 @@
 define(['FlatsManager'],
 function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
+
+        FlatsApp.startWithParent = false;
+
+        FlatsApp.onStart = function() {
+            console.log('FlatsAPp: was started');
+        }
+
+        FlatsApp.onStop = function() {
+            console.log('FlatsApp: was stopped');
+        }
+
 	    FlatsApp.Router = Marionette.AppRouter.extend({
 	        appRoutes: {
 			    'flats'         :   'listFlats',
@@ -10,22 +21,35 @@ function(FlatsManager){
 			}
 	    });
 
+        // описываем функцию, которая выполняет определённый метод
+        // подприложения, одновременно останавливая другие подприложения
+        // и запуская своё
+	    function executeAction(action, args) {
+	        FlatsManager.startSubApp('FlatsApp');
+	        action(args);
+	    }
+
 	    // API, которое используется в качестве контроллера
         // для роутера подприложения FlatsApp
 		var API = {
 		    listFlats: function (criterion) {
-			    require(['app/flats/list_controller'], function (ListController) {
-					ListController.listFlats(criterion);
+		        require(['app/flats/list_controller'], function (ListController) {
+		            executeAction(ListController.listFlats, criterion);
 				});
 			},
             showFlat: function(id) {
-                require(['app/flats/show_controller'], function(ShowController) {
-                    ShowController.showFlat(id);
+                require(['app/flats/show_controller'], function (ShowController) {
+                    executeAction(ShowController.showFlat, id);
                 });
             },
             newFlat: function() {
-                require(['app/flats/new_controller'], function(NewController) {
-                    NewController.newFlat();
+                require(['app/flats/new_controller'], function (NewController) {
+                    executeAction(NewController.newFlat);
+                });
+            },
+            navbarFlats: function() {
+                require(['app/flats/navbar_controller'], function (NavbarController) {
+                    executeAction(NavbarController.showNavbar);
                 });
             }
 		};
@@ -49,8 +73,15 @@ function(FlatsManager){
 		    new FlatsApp.Router({
 				controller: API
 			});
-		});
-	});
+        });
+
+        // в поприложении flats во всех его представлениях
+        // должен быть общий navbar
+        FlatsApp.addInitializer(function() {
+            API.navbarFlats();
+        });
+
+    });
 
 	return FlatsManager.FlatsApp;
 });

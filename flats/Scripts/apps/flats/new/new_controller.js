@@ -4,7 +4,7 @@ function(FlatsManager, View){
 	FlatsManager.module('ContactsApp.New', function(New, FlatsManager, Backbone, Marionette, $, _){
 		New.Controller = {
 		    newFlat: function() {
-		        console.log('new flat controller, newFlat started');
+		        console.log('FlatsApp:NewController: method newFlat');
 		        require(['entities/flat'], function() {
 		            var newFlatModel = FlatsManager.request('flat:entity:new');
 		            var newFlatView = new View.Flat({
@@ -15,7 +15,14 @@ function(FlatsManager, View){
 		                newFlatLayout.mainRegion.show(newFlatView);
 		            });
 		            newFlatView.on('form:submit', function (data) {
-		                newFlatModel.save(data);
+		                newFlatModel.save(data, {
+		                    success: function() {
+		                        FlatsManager.navigate('#flats');
+		                    },
+		                    error: function() {
+		                        alert('save error');
+		                    }
+		                });
 		            });
 		            FlatsManager.mainRegion.show(newFlatLayout);
 		        });
