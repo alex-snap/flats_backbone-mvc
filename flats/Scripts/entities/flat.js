@@ -14,10 +14,6 @@ function (FlatsManager) {
 				rooms   : '',
 				sleeper: '',
 				description: ''
-                //coords: {
-                //    lon: '',
-                //    lat: ''
-                //}
 			},
 			validate: function(attrs, options){
 			    var errors = {};

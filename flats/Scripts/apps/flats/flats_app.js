@@ -35,6 +35,7 @@ function(FlatsManager){
         // для роутера подприложения FlatsApp
 		var API = {
 		    listFlats: function (criterion) {
+		        debugger;
 		        require(['app/flats/list_controller'], function (ListController) {
 		            executeAction(ListController.listFlats, criterion);
 				});
