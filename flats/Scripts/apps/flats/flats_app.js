@@ -8,7 +8,9 @@ function(FlatsManager){
             console.log('FlatsAPp: was started');
         }
 
-        FlatsApp.onStop = function() {
+        FlatsApp.onStop = function () {
+            FlatsManager.headerRegion.empty();
+            FlatsManager.mainRegion.empty();
             console.log('FlatsApp: was stopped');
         }
 
@@ -69,6 +71,7 @@ function(FlatsManager){
             FlatsManager.navigate('flats/new');
             API.newFlat();
         });
+
         FlatsManager.addInitializer(function () {
 		    new FlatsApp.Router({
 				controller: API

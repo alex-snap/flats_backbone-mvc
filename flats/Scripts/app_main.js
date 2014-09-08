@@ -3,15 +3,6 @@
 function(Marionette) {
     var FlatsManager = new Marionette.Application();
 
-    var GlobalRouter = Marionette.AppRouter.extend({
-        routes: {
-            '*path': 'showErrorPage'
-        },
-        showErrorPage: function() {
-            console.log('404 page is showing');
-        }
-    });
-
     FlatsManager.addRegions({
         headerRegion    :   '#header-region',
         mainRegion      :   '#main-region',
