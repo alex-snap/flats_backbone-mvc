@@ -22,12 +22,12 @@
     <div class="form-group">
         <label for="image">Фотография жилья</label>
         <div>
-            <button type="button" class="btn btn-info js-img-add">Добавить фото жилья</button>
+            <button type="button" class="btn btn-default btn-sm js-img-add">Загрузить фото</button>
         </div>
         <div class="img-upload img-upload--flat js-upload-container">
             <div class="img-upload__list js-img__list clearfix">
                 <div class="img-upload__thumb js-img__tpl">
-                    <div data-fileapi="file.remove" class="img-upload__thumb__del" title="Удалить изображение">✖</div>
+                    <div data-fileapi="file.remove" class="img-upload__thumb__del js-img__delete" title="Удалить изображение">✖</div>
                     <div class="js-img__tpl__preview"></div>
                     <div class="img-upload__thumb__progress js-img__progress">
                         <div class="bar js-img__bar"></div>
@@ -36,11 +36,10 @@
                 </div>
             </div>    
             <input id="js-img-input" type="file" name="UploaderHelper" class="hide">
-            <!--<div class="text-center">
-                    <button type="button" class="btn btn-success js-img__upload">Загрузить добавленные фото</button>
-                </div>-->
         </div>
         <input type="hidden" name="ImagesList" class="js-images-list"/>
     </div>
-    <button type="submit" class="btn btn-default js-submit">Добавить жилье</button>
+    <div class="text-right">
+        <button type="submit" class="btn btn-success js-submit">Добавить квартиру</button>
+    </div>
 </form>

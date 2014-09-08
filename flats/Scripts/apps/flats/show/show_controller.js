@@ -4,7 +4,7 @@ function (FlatsManager, View) {
 	FlatsManager.module('FlatsApp.Show', function(Show, FlatsManager, Backbone, Marionette, $, _){
 		Show.Controller = {
 		    showFlat: function (id) {
-		        console.log('show flat is start');
+		        console.log('FlatsApp:ShowController: method showFlat');
 				require(['entities/flat'], function(){
 				    var showingFlat = FlatsManager.request('flat:entity', id);
 				    $.when(showingFlat).done(function (flat) {

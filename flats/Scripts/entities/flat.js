@@ -140,14 +140,14 @@ function (FlatsManager) {
 				// защищаемся от несанкционированного вызова методов
 				// изменения состояния оригинального объекта
 				var promise = defer.promise();
-				$.when(promise).done(function(data){
-					// если данных нет, то вставим фейковые,
-					// что возвращает метод initializeFlats()
-					if (data.length === 0){
-						var models = initializeFlats();
-						flats.reset(models);
-					}
-				});
+				//$.when(promise).done(function(data){
+				//	// если данных нет, то вставим фейковые,
+				//	// что возвращает метод initializeFlats()
+				//	if (data.length === 0){
+				//		var models = initializeFlats();
+				//		flats.reset(models);
+				//	}
+				//});
 				return promise;
 			},
 

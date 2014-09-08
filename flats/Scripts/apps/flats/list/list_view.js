@@ -5,11 +5,6 @@ define(['FlatsManager',
         'tpl!apps/flats/list/templates/flats-list.tpl.html',
         'tpl!apps/flats/list/templates/flats-list-item.tpl.html',
         'tpl!apps/flats/list/templates/flats-list-none.tpl.html',
-        //templates['apps/flats/list/list_layout'],
-        //templates['apps/flats/list/list_header'],
-        //templates['apps/flats/list/list'],
-        //templates['apps/flats/list/list_item'],
-        //templates['apps/flats/list/list_none'],
         'backbone.syphon'],
 function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
     FlatsManager.module('FlatsApp.List.View', function (View, FlatsManager, Backbone, Marionette, $, _) {
@@ -41,10 +36,7 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 			submitFilter: function () {
                 var filter = Backbone.Syphon.serialize(this);
                 this.trigger('flats:search', filter);
-			},
-			render: function () {
-                this.$el.html(this.template({ hideFilter: this.options.filterUiHide }));
-            }
+			}
             //searchClicked: function() {
             //    var query = $(this.ui.searchString).val();
             //    this.trigger('flats:search', query);
@@ -69,10 +61,6 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 				'click td a.js-edit'	: 	'flat:edit',
 				'click button.js-delete': 	'flat:delete'
 			},
-			events: {
-                
-				//'click a': 		'showClicked'
-			},
 		    // задаём метод render в ручную, 
             // чтобы добавить склонения слов в шаблон
 			render: function () {
@@ -85,33 +73,10 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
                 }
 			    this.$el.html(this.template({ flat: modelData, words: formattedWords }));
 			},
-			flash: function(cssClass){
-				var $view = this.$el;
-				$view.hide().toggleClass(cssClass).fadeIn(800, function(){
-					setTimeout(function(){
-						$view.toggleClass(cssClass);
-					}, 500);
-				});
-			},
-			highlightName: function(e){
-				this.$el.toggleClass('warning');
-			},
-			showClicked: function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				this.trigger('flat:show', this.model);
-			},
 			editClicked: function(e){
 				e.preventDefault();
 				e.stopPropagation();
 				this.trigger('flat:edit', this.model);
-			},
-			// переопределяем метод remove, который вызывается при удалении модели
-			// для плавного скрытия элемента при  удалении
-			remove: function(){
-				this.$el.fadeOut(function(){
-					$(this).remove();
-				});
 			}
 		});
 
@@ -146,6 +111,7 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
                 this.collection.fetch({ data: query });
             }
 		});
-	});
+    });
+
 	return FlatsManager.FlatsApp.List.View;
 });

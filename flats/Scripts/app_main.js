@@ -21,10 +21,24 @@ function(Marionette) {
         return Backbone.history.fragment;
     };
 
+    FlatsManager.startSubApp = function (appName, args) {
+        var startedApp = appName ? FlatsManager.module(appName) : null;
+        if (FlatsManager.currentApp === startedApp) { return; }
+
+        if (FlatsManager.currentApp) {
+            FlatsManager.currentApp.stop();
+        }
+
+        FlatsManager.currentApp = startedApp;
+        if (startedApp) {
+            startedApp.start(args);
+        }
+    };
+
     FlatsManager.on('start', function () {
         if (Backbone.history) {
             // создание роутов дочернего приложения FlatsApp до инициализации системы роутов Backbone
-            require(['app/flats'], function () {
+            require(['app/flats', 'app/test'], function () {
                 Backbone.history.start();
                 if (FlatsManager.getCurrenRoute() === '') {
                     // запуск подприложения flats
@@ -32,7 +46,7 @@ function(Marionette) {
                 }
             });
         }
-        console.log('Flats manager has started');
+        console.log('FlatsManager: started');
     });
 
     return FlatsManager;

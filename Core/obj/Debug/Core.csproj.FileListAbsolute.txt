@@ -15,10 +15,6 @@ D:\projects\flats_backbone-mvc\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.V8.
 D:\projects\flats_backbone-mvc\Core\bin\Debug\JavaScriptEngineSwitcher.Msie.dll
 D:\projects\flats_backbone-mvc\Core\bin\Debug\MsieJavaScriptEngine.dll
 D:\projects\flats_backbone-mvc\Core\bin\Debug\ru-ru\MsieJavaScriptEngine.resources.dll
-D:\flats\flats_backbone-mvc\Core\bin\Debug\ClearScript.V8\ClearScriptV8-32.dll
-D:\flats\flats_backbone-mvc\Core\bin\Debug\ClearScript.V8\ClearScriptV8-64.dll
-D:\flats\flats_backbone-mvc\Core\bin\Debug\ClearScript.V8\v8-ia32.dll
-D:\flats\flats_backbone-mvc\Core\bin\Debug\ClearScript.V8\v8-x64.dll
 D:\flats\flats_backbone-mvc\Core\bin\Debug\Core.dll.config
 D:\flats\flats_backbone-mvc\Core\bin\Debug\Core.dll
 D:\flats\flats_backbone-mvc\Core\bin\Debug\Core.pdb
@@ -36,15 +32,13 @@ D:\flats\flats_backbone-mvc\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.V8.res
 D:\flats\flats_backbone-mvc\Core\bin\Debug\ru-ru\MsieJavaScriptEngine.resources.dll
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.dll
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.pdb
-D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.InitialCreate.resources
-D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.Migrations.ImgsFlatIdNull.resources
-D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 D:\Projects\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\AutoMapper.Net4.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\AutoMapper.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\DAL.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\DAL.pdb
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\AutoMapper.xml
+<<<<<<< HEAD
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
@@ -61,3 +55,11 @@ D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.xml
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.xml
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+=======
+D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.Net4.dll
+D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.dll
+D:\flats\flats_backbone-mvc\Core\bin\Debug\DAL.dll
+D:\flats\flats_backbone-mvc\Core\bin\Debug\DAL.pdb
+D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.xml
+D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+>>>>>>> e8c2d3fe8cbc782835d085c4cb41da69d07907aa
