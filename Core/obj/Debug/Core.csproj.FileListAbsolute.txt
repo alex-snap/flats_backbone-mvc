@@ -38,9 +38,28 @@ D:\Projects\flats_backbone-mvc\Core\bin\Debug\AutoMapper.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\DAL.dll
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\DAL.pdb
 D:\Projects\flats_backbone-mvc\Core\bin\Debug\AutoMapper.xml
+<<<<<<< HEAD
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Owin.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.xml
+D:\Projects\flats_backbone-mvc\Core\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+=======
 D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.Net4.dll
 D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.dll
 D:\flats\flats_backbone-mvc\Core\bin\Debug\DAL.dll
 D:\flats\flats_backbone-mvc\Core\bin\Debug\DAL.pdb
 D:\flats\flats_backbone-mvc\Core\bin\Debug\AutoMapper.xml
 D:\flats\flats_backbone-mvc\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+>>>>>>> e8c2d3fe8cbc782835d085c4cb41da69d07907aa
