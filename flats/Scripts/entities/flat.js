@@ -90,7 +90,9 @@ function (FlatsManager) {
 
 		// API для работы с данными сущности "квартира"
 		var API = {
-            // получить все квартиры с сервера
+
+		    // получить все квартиры с сервера
+		    // --------------
 		    getFlatEntities: function () {
                 // создаем коллекцию для синхронизации данных
 				var flats = new Entities.FlatsCollection();
@@ -117,8 +119,8 @@ function (FlatsManager) {
 						// deferred.resolve(args) вызывает обработчики doneCallbacks с
 						// параметрами args.
 						// deferred.done(doneCallbacks) добавляет обработчик, который
-						// будет вызван, когда объект перейдёт в состояние выполнено
-						defer.resolve(data);
+					    // будет вызван, когда объект перейдёт в состояние выполнено
+						defer.resolve(jsonToLowerCase(data));
 					},
                     error: function() {
                         defer.reject();
@@ -145,9 +147,10 @@ function (FlatsManager) {
 				//	}
 				//});
 				return promise;
-			},
+		    },
 
-            // получить квартиру с заданным id
+		    // получить квартиру с заданным id
+		    // --------------
 		    getFlatEntity: function (flatId) {
                 // создаем модель с указанным id для синхронизации её с сервером
 				var flat = new Entities.Flat({id: flatId});
@@ -167,7 +170,8 @@ function (FlatsManager) {
 		        return defer.promise();
 		    },
 
-            // получить квартиры с сервера с возможностью пагинации
+		    // получить квартиры с сервера с возможностью пагинации
+		    // --------------
             getPageableFlatEntities: function() {
                 var pageableFlats = new Entities.PageableFlatsCollection();
                 var defer = $.Deferred();
@@ -187,7 +191,15 @@ function (FlatsManager) {
             }
 		};
 
+
+        // все поля json с маленькой буквы
+        // ---------------------
+        function jsonToLowerCase(json) {
+            return json.replace(/"([^"]+)":/g,function($0,$1){return ('"'+$1.toLowerCase()+'":');});
+        }
+
         // обрабатываем запросы приложения FlatsManager
+        // ---------------------
 		FlatsManager.reqres.setHandler('flat:entities', function () {
 			return API.getFlatEntities();
 		});
