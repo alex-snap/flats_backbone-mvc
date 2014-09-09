@@ -57,16 +57,6 @@ D:\Projects\flats_backbone-dev\Core\bin\Debug\JavaScriptEngineSwitcher.Core.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\JavaScriptEngineSwitcher.Msie.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\JavaScriptEngineSwitcher.V8.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\MsieJavaScriptEngine.dll
-D:\Projects\flats_backbone-dev\Core\bin\Debug\DAL.pdb
-D:\Projects\flats_backbone-dev\Core\bin\Debug\AutoMapper.xml
-D:\Projects\flats_backbone-dev\Core\bin\Debug\EntityFramework.xml
-D:\Projects\flats_backbone-dev\Core\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll
-D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.V8.resources.dll
-D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\MsieJavaScriptEngine.resources.dll
-D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
-D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.dll
-D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.pdb
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
@@ -76,6 +66,10 @@ D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.Security.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Owin.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\flats_backbone-dev\Core\bin\Debug\DAL.pdb
+D:\Projects\flats_backbone-dev\Core\bin\Debug\AutoMapper.xml
+D:\Projects\flats_backbone-dev\Core\bin\Debug\EntityFramework.xml
+D:\Projects\flats_backbone-dev\Core\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
@@ -83,3 +77,9 @@ D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.Security.xml
 D:\Projects\flats_backbone-dev\Core\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll
+D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\JavaScriptEngineSwitcher.V8.resources.dll
+D:\Projects\flats_backbone-dev\Core\bin\Debug\ru-ru\MsieJavaScriptEngine.resources.dll
+D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.dll
+D:\Projects\flats_backbone-dev\Core\obj\Debug\Core.pdb

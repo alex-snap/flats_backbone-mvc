@@ -172,6 +172,7 @@ D:\Projects\flats_backbone-dev\flats\bin\BundleTransformer.Core.dll
 D:\Projects\flats_backbone-dev\flats\bin\BundleTransformer.Less.dll
 D:\Projects\flats_backbone-dev\flats\bin\ClearScript.dll
 D:\Projects\flats_backbone-dev\flats\bin\Core.dll
+D:\Projects\flats_backbone-dev\flats\bin\DAL.dll
 D:\Projects\flats_backbone-dev\flats\bin\EntityFramework.dll
 D:\Projects\flats_backbone-dev\flats\bin\EntityFramework.SqlServer.dll
 D:\Projects\flats_backbone-dev\flats\bin\JavaScriptEngineSwitcher.Core.dll
@@ -207,8 +208,8 @@ D:\Projects\flats_backbone-dev\flats\bin\System.Web.WebPages.dll
 D:\Projects\flats_backbone-dev\flats\bin\System.Web.WebPages.Razor.dll
 D:\Projects\flats_backbone-dev\flats\bin\WebActivatorEx.dll
 D:\Projects\flats_backbone-dev\flats\bin\WebGrease.dll
-D:\Projects\flats_backbone-dev\flats\bin\DAL.dll
 D:\Projects\flats_backbone-dev\flats\bin\Core.pdb
+D:\Projects\flats_backbone-dev\flats\bin\DAL.pdb
 D:\Projects\flats_backbone-dev\flats\bin\Antlr3.Runtime.pdb
 D:\Projects\flats_backbone-dev\flats\bin\AutoMapper.xml
 D:\Projects\flats_backbone-dev\flats\bin\EntityFramework.xml
@@ -235,7 +236,6 @@ D:\Projects\flats_backbone-dev\flats\bin\System.Web.Razor.xml
 D:\Projects\flats_backbone-dev\flats\bin\System.Web.WebPages.xml
 D:\Projects\flats_backbone-dev\flats\bin\System.Web.WebPages.Deployment.xml
 D:\Projects\flats_backbone-dev\flats\bin\System.Web.WebPages.Razor.xml
-D:\Projects\flats_backbone-dev\flats\bin\DAL.pdb
 D:\Projects\flats_backbone-dev\flats\bin\ru-ru\BundleTransformer.Core.resources.dll
 D:\Projects\flats_backbone-dev\flats\bin\ru-ru\BundleTransformer.Less.resources.dll
 D:\Projects\flats_backbone-dev\flats\bin\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll
