@@ -9,12 +9,12 @@
                             Умный фильтр
                         </p>
                         <div class="btn-group">
-                            <input name="SmartFilter" type="radio" value="MinPrice" />
-                            <label>Меньше цена</label>
-                            <input name="SmartFilter" type="radio" value="MaxComfort" />
-                            <label>Больше комфорта</label>
-                            <input name="SmartFilter" type="radio" value="NearCenter" />
-                            <label>Ближе к центру</label>
+                            <input id="MinPrice" name="SortBy" type="radio" value="MinPrice" />
+                            <label for="MinPrice">Меньше цена</label>
+                            <input id="MaxRooms" name="SortBy" type="radio" value="MaxRooms" />
+                            <label for="MaxRooms">Больше комнат</label>
+                            <input id="NewDate" name="SortBy" type="radio" value="NewDate" />
+                            <label for="NewDate">Новинки</label>
                             <!--<button class="btn btn-info js-smart-filter" data-filter="MinPrice">Меньше цена</button>
                                 <button class="btn btn-info js-smart-filter" data-filter="MaxComfort">Больше комфорта</button>
                                 <button class="btn btn-info js-smart-filter" data-filter="NearCenter">Ближе к центру</button>-->
@@ -27,7 +27,7 @@
                             Поиск
                         </p>
                         <div class="input-group">
-                            <input type="text" name="SearchString" class="form-control js-flats-search__criterion">
+                            <input type="text" name="Query" class="form-control js-flats-search__criterion">
                             <span class="input-group-btn">
                                 <button class="btn btn-default js-flats-serach" type="submit">Найти</button>
                             </span>
