@@ -210,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\FlatsController.cs" />
@@ -359,6 +360,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{7dfcbf26-a7ed-4768-a4b6-6074de982db2}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{16EB424F-42E7-4FA9-A24D-E2F76B4C79F0}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
