@@ -319,6 +319,7 @@
     <Content Include="Content\less\pages\main.less" />
     <Content Include="Views\Shared\Partial\FakeFlats.cshtml" />
     <Content Include="Views\Flats\Index.cshtml" />
+    <Content Include="Content\less\components\img-uploader.less" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\TestImgs\" />
