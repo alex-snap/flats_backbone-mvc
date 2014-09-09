@@ -1,16 +1,19 @@
-using System.Data.Entity.Migrations;
-
-namespace DAL.Migrations
+namespace DAL.IdentityMigrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<EFDbContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<DAL.FlatsIdentityDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DAL.EFDbContext";
+            MigrationsDirectory = @"IdentityMigrations";
         }
 
-        protected override void Seed(EFDbContext context)
+        protected override void Seed(DAL.FlatsIdentityDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

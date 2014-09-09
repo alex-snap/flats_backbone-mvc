@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const\SortBy.cs" />
     <Compile Include="Models\AddFlatModel.cs" />
     <Compile Include="Models\FlatModel.cs" />
     <Compile Include="Models\FlatViewModel.cs" />

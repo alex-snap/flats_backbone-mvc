@@ -13,5 +13,6 @@ namespace DAL
         public DbSet<Flat> Flats { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<FlatBusyDate> FlatBusyDates { get; set; }
+        //public DbSet<User> Users { get; set; }
     }
 }
