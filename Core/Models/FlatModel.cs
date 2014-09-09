@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Core.Models
 {
@@ -10,5 +11,6 @@ namespace Core.Models
         public int Rooms { get; set; }
         public int Sleeper { get; set; }
         public string ImageLink { get; set; }
+        public DateTime Created { get; set; }
     }
 }

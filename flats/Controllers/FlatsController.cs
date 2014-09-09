@@ -25,12 +25,12 @@ namespace flats.Controllers
         [HttpPost]
         public JsonResult Add(AddFlatModel model)
         {
-
+            
             _flatService.Add(model);
             return Json(new { Success = true });
         }
 
-        public JsonResult All(AddFlatModel model)
+        public JsonResult All(string sortBy, string query, AddFlatModel model)
         {
             switch (Request.HttpMethod)
             {
@@ -38,7 +38,7 @@ namespace flats.Controllers
                     _flatService.Add(model);
                     return Json(new { Success = true });
                 default:
-                    return Json(_flatService.GetAll(), JsonRequestBehavior.AllowGet);
+                    return Json(_flatService.GetAll(sortBy, query), JsonRequestBehavior.AllowGet);
             }
         }
 

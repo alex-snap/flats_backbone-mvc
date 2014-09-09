@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Core.Const;
 using Core.Models;
 using DAL;
 using DAL.Entities;
@@ -37,12 +38,21 @@ namespace Core.Services.Implementations
             }
         }
 
-        public IEnumerable<FlatPreviewModel> GetAll()
+        public IEnumerable<FlatPreviewModel> GetAll(string sortBy, string query)
         {
             var flatsModel = new List<FlatPreviewModel>();
             using (EFDbContext db = new EFDbContext())
             {
-                foreach (var flat in db.Flats.ToList())
+                List<Flat> flats;
+                if (!string.IsNullOrEmpty(query))
+                {
+                    query = query.ToLower();
+                    flats = db.Flats.Where(f => f.Address.ToLower().Contains(query)
+                                        || f.Description.ToLower().Contains(query)).ToList();
+                }
+                else
+                    flats = db.Flats.ToList();
+                foreach (var flat in flats)
                 {
                     var flatModel = new FlatPreviewModel();
                     Mapper.CreateMap(typeof(Flat), flatModel.GetType());
@@ -51,6 +61,15 @@ namespace Core.Services.Implementations
                         flatModel.ImageLink = flat.Images.First().Path;
                     flatsModel.Add(flatModel);
                 }
+            }
+            switch (sortBy)
+            {
+                case SortBy.MaxRooms:
+                    return flatsModel.OrderByDescending(f => f.Rooms);
+                case SortBy.MinPrice:
+                    return flatsModel.OrderBy(f => f.Price);
+                case SortBy.NewDate:
+                    return flatsModel.OrderByDescending(f => f.Created);
             }
             return flatsModel;
         }

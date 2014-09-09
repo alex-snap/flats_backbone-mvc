@@ -82,6 +82,11 @@
     <Compile Include="FlatDbContext.cs" />
     <Compile Include="FlatsIdentityDbContext.cs" />
     <Compile Include="FlatsUserManager.cs" />
+    <Compile Include="IdentityMigrations\201409091831365_Initial.cs" />
+    <Compile Include="IdentityMigrations\201409091831365_Initial.Designer.cs">
+      <DependentUpon>201409091831365_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityMigrations\Configuration.cs" />
     <Compile Include="Migrations\201407241905124_InitialCreate.cs" />
     <Compile Include="Migrations\201407241905124_InitialCreate.Designer.cs">
       <DependentUpon>201407241905124_InitialCreate.cs</DependentUpon>
@@ -106,6 +111,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="IdentityMigrations\201409091831365_Initial.resx">
+      <DependentUpon>201409091831365_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407241905124_InitialCreate.resx">
       <DependentUpon>201407241905124_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
