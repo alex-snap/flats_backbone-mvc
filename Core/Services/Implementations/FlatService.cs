@@ -14,7 +14,7 @@ namespace Core.Services.Implementations
         {
             using (var db = new EFDbContext())
             {
-                Mapper.CreateMap(flatModel.GetType(), typeof(Flat));
+                Mapper.CreateMap(flatModel.GetType(), typeof (Flat)).ForMember("Images", op => op.Ignore());
                 var flat = new Flat()
                 {
                     Created = DateTime.Now,
@@ -22,13 +22,10 @@ namespace Core.Services.Implementations
                 };
                 db.Flats.Add(flat);
                 Mapper.Map(flatModel, flat);
-                if (flatModel.ImagesList != null)
+                if (flatModel.Images != null)
                 {
-                    var imgsIds =
-                        flatModel.ImagesList.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).ToList();
-                    foreach (var stringImgsId in imgsIds)
+                    foreach (var imgId in flatModel.Images)
                     {
-                        int imgId = int.Parse(stringImgsId);
                         var img = db.Images.SingleOrDefault(i => i.ID == imgId);
                         if (img != null)
                         {

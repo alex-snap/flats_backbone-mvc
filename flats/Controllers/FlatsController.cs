@@ -25,14 +25,21 @@ namespace flats.Controllers
         [HttpPost]
         public JsonResult Add(AddFlatModel model)
         {
+
             _flatService.Add(model);
             return Json(new { Success = true });
         }
 
-        [HttpGet]
-        public JsonResult All()
+        public JsonResult All(AddFlatModel model)
         {
-            return Json(_flatService.GetAll(), JsonRequestBehavior.AllowGet);
+            switch (Request.HttpMethod)
+            {
+                case "POST":
+                    _flatService.Add(model);
+                    return Json(new { Success = true });
+                default:
+                    return Json(_flatService.GetAll(), JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpGet]
