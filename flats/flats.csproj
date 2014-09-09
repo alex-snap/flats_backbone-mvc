@@ -231,6 +231,18 @@
     </Content>
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\bg-city.jpg" />
+    <Content Include="Content\less\components\loader.css">
+      <DependentUpon>loader.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\components\loader.min.css">
+      <DependentUpon>loader.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\styles.css">
+      <DependentUpon>styles.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\styles.min.css">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\flats\navbar\templates\flats-navbar.tpl.html" />
     <Content Include="Scripts\apps\flats\common\templates\flat-edit.tpl.html" />
@@ -263,12 +275,17 @@
     </None>
     <Content Include="Scripts\common\modules\collection-paginator\collection-paginator.js" />
     <Content Include="Scripts\common\modules\collection-paginator\collection-paginator.tpl.html" />
+    <Content Include="Scripts\common\modules\vent\vent.js" />
+    <Content Include="Scripts\common\templates\loader.tpl.html" />
+    <Content Include="Scripts\common\templates\footer.tpl.html" />
     <Content Include="Scripts\common\utils\utils.js" />
+    <Content Include="Scripts\common\views.js" />
     <Content Include="Scripts\entities\flat.js" />
     <Content Include="Scripts\libs\almond\almond.js" />
     <Content Include="Scripts\libs\backbone\backbone.js" />
     <Content Include="Scripts\libs\backbone\backbone.localStorage.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.queryparams.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.syphon.js" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.css" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.min.js" />
@@ -287,6 +304,7 @@
     <Content Include="Scripts\libs\require\r.js" />
     <Content Include="Scripts\libs\require\require.js" />
     <Content Include="Scripts\libs\require\text.js" />
+    <Content Include="Scripts\libs\spin\spin.min.js" />
     <Content Include="Scripts\libs\underscore\underscore-tpl.js" />
     <Content Include="Scripts\libs\underscore\underscore.js" />
     <Content Include="Scripts\libs\underscore\underscore.min.js" />
@@ -320,6 +338,14 @@
     <Content Include="Views\Shared\Partial\FakeFlats.cshtml" />
     <Content Include="Views\Flats\Index.cshtml" />
     <Content Include="Content\less\components\img-uploader.less" />
+    <Content Include="Content\less\pages\flats\new.less" />
+    <Content Include="Content\less\components\loader.less" />
+    <Content Include="Content\less\components\loader.css.map">
+      <DependentUpon>loader.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\styles.css.map">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\TestImgs\" />

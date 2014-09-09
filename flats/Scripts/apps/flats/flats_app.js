@@ -1,15 +1,16 @@
-define(['FlatsManager'],
+define(['FlatsManager',
+        'backbone.queryparams'],
 function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
 
         FlatsApp.startWithParent = false;
 
         FlatsApp.onStart = function() {
-            console.log('FlatsAPp: was started');
+            console.log('FlatsApp: started');
         }
 
         FlatsApp.onStop = function() {
-            console.log('FlatsApp: was stopped');
+            console.log('FlatsApp: stopped');
         }
 
 	    FlatsApp.Router = Marionette.AppRouter.extend({
@@ -32,9 +33,9 @@ function(FlatsManager){
 	    // API, которое используется в качестве контроллера
         // для роутера подприложения FlatsApp
 		var API = {
-		    listFlats: function (criterion) {
+		    listFlats: function (params) {
 		        require(['app/flats/list_controller'], function (ListController) {
-		            executeAction(ListController.listFlats, criterion);
+		            executeAction(ListController.listFlats, params);
 				});
 			},
             showFlat: function(id) {

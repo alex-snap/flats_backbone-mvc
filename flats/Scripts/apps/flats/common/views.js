@@ -3,7 +3,7 @@ define(['FlatsManager',
         'jquery.fileapi',
 		'backbone.syphon'],
 function(FlatsManager, FlatEditTpl){
-    FlatsManager.module('ContactsApp.Common.Views', function (Views, FlatsManager, Backbone, Marionette, $, _) {
+    FlatsManager.module('FlatsApp.Common.Views', function (Views, FlatsManager, Backbone, Marionette, $, _) {
 
         // форма редактирования/создания квартиры
         // ---------------
@@ -108,5 +108,5 @@ function(FlatsManager, FlatEditTpl){
         }
     }
 
-    return FlatsManager.ContactsApp.Common.Views;
+    return FlatsManager.FlatsApp.Common.Views;
 });

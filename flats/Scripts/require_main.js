@@ -16,24 +16,34 @@
             'fileapi'               :   'libs/fileapi/FileAPI.min',
             'fileapiExif'           :   'libs/fileapi/FileAPI.exif',
             'jquery.fileapi'        :   'libs/fileapi/jquery.fileapi',
+            'spin'                  :   'libs/spin/spin.min',
+            'jquery.spin'           :   'libs/spin/jquery.spin',
+            'backbone.queryparams'  :   'libs/backbone/backbone.queryparams.min',
             'google-map'            :   'https://maps.googleapis.com/maps/api/js',
 
 
             // ----- Application
             'FlatsManager': 'app_main',
 
+
             // ----- Common
-            // config
+            // -- config
             'config/marionette.region.dialog'   :   'common/config/marionette/regions/dialog',
             'config/localstorage'               :   'common/config/storage/localstorage',
-            // utils
-            'utils' : 'common/utils/utils',
+            // -- utils
+            'utils'                             :   'common/utils/utils',
+            // -- views
+            'views'                             :   'common/views',
+            // -- modules
+            'module/paginatorView'              :   'common/modules/collection-paginator/collection-paginator',
+
 
             // ----- Entities
-            'entities/contact'          :   'entities/contact',
+            'entities/flat' :   'entities/flat',
+
 
             // ----- Sub applications
-            // flats sub app
+            // -- flats sub app
             'app/flats'                     :   'apps/flats/flats_app',
             'app/flats/list_controller'     :   'apps/flats/list/list_controller',
             'app/flats/list_view'           :   'apps/flats/list/list_view',
@@ -44,14 +54,11 @@
             'app/flats/navbar_controller'   :   'apps/flats/navbar/navbar_controller',
             'app/flats/navbar_view'         :   'apps/flats/navbar/navbar_view',
             // flats common
-            'app/flats/common/views'    :   'apps/flats/common/views',
+            'app/flats/common/views'        :   'apps/flats/common/views',
 
-            // test sub app
-            'app/test': 'apps/test/test_app',
-            'app/test/one_controller': 'apps/test/one/one_controller',
-
-            // ----- Modules
-            'module/paginatorView'      :   'common/modules/collection-paginator/collection-paginator'
+            // -- test sub app
+            'app/test'                  :   'apps/test/test_app',
+            'app/test/one_controller'   :   'apps/test/one/one_controller'
 
         },
         shim: {
@@ -70,28 +77,10 @@
             'localstorage'      :   ['backbone'],
             'backbone.paginator':   ['backbone'],
             'jquery-ui'         :   ['jquery'],
-            'tpl'               :   ['text']
+            'tpl'               :   ['text'],
+            'jquery.spin'       :   ['spin']
         }
     }
-    //templates = {
-    //    // ------- APP flats
-    //    // list View
-    //    'apps/flats/list/list_layout'   :   'tpl!apps/flats/list/templates/flats-list-layout.tpl.html',
-    //    'apps/flats/list/list_header'   :   'tpl!apps/flats/list/templates/flats-list-header.tpl.html',
-    //    'apps/flats/list/list'          :   'tpl!apps/flats/list/templates/flats-list.tpl.html',
-    //    'apps/flats/list/list_item'     :   'tpl!apps/flats/list/templates/flats-list-item.tpl.html',
-    //    'apps/flats/list/list_none'     :   'tpl!apps/flats/list/templates/flats-list-none.tpl.html',
-    //    // show view
-    //    'apps/flats/show/show_flat'     :   'tpl!apps/flats/show/templates/flats-show-item.tpl.html',
-    //    // new view
-    //    'apps/flats/new/new_layout'     :   'tpl!apps/flats/new/templates/flats-new-layout.tpl.html',
-    //    // new/edit flat view
-    //    'apps/flats/common/edit'        :   'tpl!apps/flats/common/templates/flat-edit.tpl.html',
-
-
-    //    // ------- Common
-    //    'module/paignator'              :   'tpl!common/modules/collection-paginator/collection-paginator.tpl.html'
-    //});
 );
 // run a main application
 require(['FlatsManager'], function (FlatsManager) {

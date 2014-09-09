@@ -14,10 +14,6 @@ function (FlatsManager) {
 				rooms   : '',
 				sleeper: '',
 				description: ''
-                //coords: {
-                //    lon: '',
-                //    lat: ''
-                //}
 			},
 			validate: function(attrs, options){
 			    var errors = {};
@@ -95,7 +91,7 @@ function (FlatsManager) {
 		// API для работы с данными сущности "квартира"
 		var API = {
             // получить все квартиры с сервера
-		    getFlatEntities: function () {
+		    getFlatEntities: function (params) {
                 // создаем коллекцию для синхронизации данных
 				var flats = new Entities.FlatsCollection();
 				var defer = $.Deferred();
@@ -111,7 +107,8 @@ function (FlatsManager) {
 				// старые записи, которых нет в новом наборе моделей
 				// не будут удалены.
 				// В метод fetch можно напрямую передать опции jQuery.ajax,
-				// например doc.fetch({data: {page: 3}}).
+		        // например doc.fetch({data: {page: 3}}).
+
 				flats.fetch({
 					success: function(data){
 						// deferred.resolve() вызывает обработчики успешного завершения
@@ -126,8 +123,10 @@ function (FlatsManager) {
 					},
                     error: function() {
                         defer.reject();
-                    }
-				});
+                    },
+                    data: params
+		        });
+
 				// deferrer.promise() создаёт проекцию объекта - 
 				// это своеобразная копия объекта, у которой есть
 				// методы добавления обработчиков и проверки состояния.
@@ -192,8 +191,8 @@ function (FlatsManager) {
 		};
 
         // обрабатываем запросы приложения FlatsManager
-		FlatsManager.reqres.setHandler('flat:entities', function () {
-			return API.getFlatEntities();
+		FlatsManager.reqres.setHandler('flat:entities', function (params) {
+		    return API.getFlatEntities(params);
 		});
 
 		FlatsManager.reqres.setHandler('flat:entity', function (id) {

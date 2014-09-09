@@ -4,6 +4,7 @@ function(FlatsManager){
         One.Controller = {
             runTest: function() {
                 console.log('TestApp:OneController: method runTest');
+                FlatsManager.mainRegion.empty();
             }
         }
     });

@@ -1,17 +1,13 @@
 ﻿define(['marionette',
         'config/marionette.region.dialog'],
-function(Marionette) {
+function (Marionette) {
+
+    // Создаем экземпляр главного приложения
+    // ---------------------
     var FlatsManager = new Marionette.Application();
 
-    var GlobalRouter = Marionette.AppRouter.extend({
-        routes: {
-            '*path': 'showErrorPage'
-        },
-        showErrorPage: function() {
-            console.log('404 page is showing');
-        }
-    });
-
+    // Описываем regions главного приложения
+    // ---------------------
     FlatsManager.addRegions({
         headerRegion    :   '#header-region',
         mainRegion      :   '#main-region',
@@ -21,15 +17,21 @@ function(Marionette) {
         //})
     });
 
+    // Метод изменения текущего роута
+    // ---------------------
     FlatsManager.navigate = function(route, options) {
         options || (options = {});
         Backbone.history.navigate(route, options);
     };
 
+    // Метод получения текущего роута
+    // ---------------------
     FlatsManager.getCurrenRoute = function() {
         return Backbone.history.fragment;
     };
 
+    // Метод для управления остановкой/запуском модулей
+    // ---------------------
     FlatsManager.startSubApp = function (appName, args) {
         var startedApp = appName ? FlatsManager.module(appName) : null;
         if (FlatsManager.currentApp === startedApp) { return; }
@@ -44,19 +46,30 @@ function(Marionette) {
         }
     };
 
+    // После старта приложения, осуществляем подгрузу подприложений
+    // для инициализации их роутов до Backbone.history.start() и 
+    // запускаем подприложение flats с методом list
+    // ---------------------
     FlatsManager.on('start', function () {
         if (Backbone.history) {
-            // создание роутов дочернего приложения FlatsApp до инициализации системы роутов Backbone
             require(['app/flats', 'app/test'], function () {
                 Backbone.history.start();
                 if (FlatsManager.getCurrenRoute() === '') {
-                    // запуск подприложения flats
                     FlatsManager.trigger('flats:list');
                 }
             });
         }
+
+        // инициализация модуля Common.Views
+        // и отрисовка общего футера футера
+        // ---------------
+        require(['views'], function () {
+            var footerView = new FlatsManager.Common.Views.Footer();
+            FlatsManager.footerRegion.show(footerView);
+        });
         console.log('FlatsManager: started');
     });
 
+    // ---------------------
     return FlatsManager;
 });

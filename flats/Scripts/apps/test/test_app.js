@@ -4,11 +4,11 @@ function(FlatsManager){
         TestApp.startWithParent = false;
 
         TestApp.onStart = function() {
-            console.log('TestApp: was started');
+            console.log('TestApp: started');
         }
 
         TestApp.onStop = function() {
-            console.log('TestApp: was stopped');
+            console.log('TestApp: stopped');
         }
 
         TestApp.Router = Marionette.AppRouter.extend({
