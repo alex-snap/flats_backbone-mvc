@@ -12,14 +12,14 @@ namespace flats
             routes.MapRoute(
                 name: "Flats",
                 url: "flats",
-                defaults: new { controller = "Flats", action = "All", httpMethod = new HttpMethodConstraint("GET") }
+                defaults: new { controller = "Flats", action = "All" }
             );
 
-            routes.MapRoute(
-                name: "FlatAdd",
-                url: "flats",
-                defaults: new { controller = "Flats", action = "Add", httpMethod = new HttpMethodConstraint("POST") }
-            );
+            //routes.MapRoute(
+            //    name: "FlatAdd",
+            //    url: "flats",
+            //    defaults: new { controller = "Flats", action = "Add", httpMethod = new HttpMethodConstraint("POST") }
+            //);
 
             routes.MapRoute(
                 name: "Flat",

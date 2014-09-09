@@ -55,7 +55,7 @@ namespace flats.Controllers
                         }
                     }
                 }
-                catch (HttpException ex)
+                catch (HttpException)
                 {
                     return;
                 }
