@@ -315,6 +315,8 @@ body {
 .fl-list__item__img-wrap {
   width: 70%;
   position: relative;
+  max-height: 180px;
+  text-align: center;
   display: inline-block;
   vertical-align: middle;
 }

@@ -8,21 +8,21 @@ function (FlatsManager) {
 		Entities.Flat = Backbone.Model.extend({
 			urlRoot: 'flats',
 			defaults: {
-				address : '',
-				imgSrc  : '',
-				price   : '',
-				rooms   : '',
-				sleeper: '',
-				description: ''
+				Address : '',
+				Price   : '',
+				Rooms   : '',
+				Sleeper: '',
+				Description: '',
+                ImageLink: '/content/img/default.png'
 			},
 			validate: function(attrs, options){
-			    var errors = {};
-                if (!attrs.address) {
-                    errors.address = 'Адрес обязателен';
-                }
-				if (!_.isEmpty(errors)){
-					return errors;
-				}
+			    //var errors = {};
+                //if (!attrs.address) {
+                //    errors.address = 'Адрес обязателен';
+                //}
+				//if (!_.isEmpty(errors)){
+				//	return errors;
+				//}
 			}
 		});
 
@@ -209,9 +209,4 @@ function (FlatsManager) {
 
     });
 	return;
-});
-
-
-var myModel = Backbone.Model.extend({
-
 });

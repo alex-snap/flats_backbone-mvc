@@ -16,7 +16,7 @@ function(FlatsManager, View){
 		            });
 		            newFlatView.on('form:submit', function (data) {
 		                newFlatModel.save(data, {
-		                    success: function() {
+		                    success: function () {
 		                        FlatsManager.navigate('#flats');
 		                    },
 		                    error: function() {

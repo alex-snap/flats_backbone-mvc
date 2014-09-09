@@ -14,7 +14,6 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                         loadingView = new CommonViews.Loader();
 
 
-
                     FlatsManager.mainRegion.show(flatsListLayout);
                     flatsListLayout.headerRegion.show(flatsListHeader);
                     flatsListLayout.flatsRegion.show(loadingView);
@@ -24,14 +23,14 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                             collection: flats,
                             afterRender: function () {
                                 // TODO исправить, так не круто
-                                var _this = this;
-                                flatsListHeader.on('flats:search', function (filter) {
-                                    var searchedCollection = FlatsManager.request('flat:entities', filter);
-                                    _this.setLoader();
-                                    $.when(searchedCollection).done(function(newFlats) {
-                                        _this.collection.set(newFlats, { reset: true });
-                                    });
-                                });
+                                //var _this = this;
+                                //flatsListHeader.on('flats:search', function (filter) {
+                                //    var searchedCollection = FlatsManager.request('flat:entities', filter);
+                                //    _this.setLoader();
+                                //    $.when(searchedCollection).done(function(newFlats) {
+                                //        _this.collection.set(newFlats, { reset: true });
+                                //    });
+                                //});
                             },
                             setLoader: function() {
                                 this.$el.append(loadingView.$el);

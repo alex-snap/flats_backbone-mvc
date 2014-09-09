@@ -94,7 +94,6 @@ function(FlatsManager, FlatEditTpl){
                     // --------------
                     if (uiEvt.result != undefined) {
                         uploadedCount++;
-                        $(_this.ui.imagesIds).val($(_this.ui.imagesIds).val() + ',' + uiEvt.result);
                         if (imgCount === uploadedCount) {
                             $(_this.ui.submitBtn).prop('disabled', false);
                         }
