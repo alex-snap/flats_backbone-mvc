@@ -1,6 +1,7 @@
 ﻿define(['FlatsManager',
 		'config/localstorage',
-        'backbone.paginator'],
+        'backbone.paginator',
+        'backbone.validation'],
 function (FlatsManager) {
     FlatsManager.module('Entities', function (Entities, FlatsManager, Backbone, Marionette, $, _) {
 
@@ -15,15 +16,38 @@ function (FlatsManager) {
 				Description: '',
                 ImageLink: '/content/img/default.png'
 			},
-			validate: function(attrs, options){
-			    //var errors = {};
-                //if (!attrs.address) {
-                //    errors.address = 'Адрес обязателен';
-                //}
-				//if (!_.isEmpty(errors)){
-				//	return errors;
-				//}
-			}
+            validation: {
+                Address: {
+                    requried: true
+                },
+                Price: {
+                    required: true,
+                    pattern: 'number',
+                    min: 1
+                },
+                Rooms: {
+                    required: true,
+                    pattern: 'number',
+                    min: 1
+                },
+                Sleepers: {
+                    pattern: 'number',
+                    min: 0
+                },
+                Images: {
+                    minlength: 1
+                }
+            }
+            // встроенный метод валидации backbone
+			//validate: function(attrs, options){
+			//    var errors = {};
+            //    if (!attrs.address) {
+            //        errors.address = 'Адрес обязателен';
+            //    }
+			//	if (!_.isEmpty(errors)){
+			//		return errors;
+			//	}
+			//}
 		});
 
         // добавляем миксину для работы с localstorage браузера

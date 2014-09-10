@@ -61,6 +61,8 @@ function(FlatsManager, FlatEditTpl){
                 accept: 'image/*',
                 multiple: true,
                 maxFiles: 10,
+                maxSize: 10 * FileAPI.MB,
+                imageSize: { minWidth: 300, minHeight: 400 },
                 autoUpload: true,
                 elements: {
                     emptyQueue: { hide: elms.imgUpload },
@@ -86,12 +88,10 @@ function(FlatsManager, FlatEditTpl){
                     var $el = uiEvt.file.$el,
                         $inputHidden = $('<input>', {
                             type: 'hidden',
-                            name: 'images[]',
+                            name: 'Images[]',
                             value: uiEvt.result
                         });
                     $el.append($inputHidden);
-
-                    // --------------
                     if (uiEvt.result != undefined) {
                         uploadedCount++;
                         if (imgCount === uploadedCount) {

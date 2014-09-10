@@ -23,34 +23,35 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
         // Header
         // ---------------------
         View.Header = Marionette.ItemView.extend({
-		    template: HeaderTpl,
+            template: HeaderTpl,
+            prop: {
+                pressTimer: null
+            },
 			events: {
-			    'click .js-flats-search': 'submitFilter',
-			    'click .js-smart-filter': 'submitFilter',
-                'change input'          : 'submitFilter'
+			    'change input[type="radio"]'    : 'submitFilter',
+                'paste input'                   : 'submitFilter',
+                'submit form'                   : 'submitFilter',
+                'keyup input'                   : 'keyPressed'
 			},
 			ui: {
                 smartFilterBtn: '.js-smart-filter',
 			    searchString:   '.js-flats-search__criterion'
 			},
-			submitFilter: function () {
+			submitFilter: function (e) {
+			    e.preventDefault();
                 var filter = Backbone.Syphon.serialize(this);
                 this.trigger('flats:search', filter);
-			}
-            //searchClicked: function() {
-            //    var query = $(this.ui.searchString).val();
-            //    this.trigger('flats:search', query);
-            //},
-            //smartFilterClicked: function(e) {
-            //    var $btn = $(e.target);
-            //    if (!$btn.hasClass('active')) {
-            //        $(this.ui.smartFilterBtn).removeClass('active');
-            //        $btn.addClass('active');
-            //    }
-            //},
-			//onSetFilterCriterion: function(criterion){
-			//	$(this.ui.criterion).val(criterion);
-			//}
+			},
+			keyPressed: function (e) {
+			    var _this = this;
+                if (this.prop.pressTimer != null) {
+                    clearTimeout(this.prop.pressTimer);
+                    this.prop.pressTimer = null;
+                } 
+                this.prop.pressTimer = setTimeout(function () {
+                    _this.submitFilter(e);
+                }, 400);
+            }
 		});
 
         // Flat

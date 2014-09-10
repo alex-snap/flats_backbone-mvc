@@ -287,6 +287,7 @@ body {
   margin: 15px 5%;
   position: relative;
   width: 40%;
+  height: 240px;
   float: left;
 }
 .fl-list__item:hover {
@@ -386,6 +387,10 @@ body {
 }
 .flat-single__title {
   font-size: 1.4em;
+}
+.flat-single__img-wrap {
+  text-align: center;
+  border: 1px solid #ECECEC;
 }
 .flat-single__img {
   max-height: 100%;

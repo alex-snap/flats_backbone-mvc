@@ -20,6 +20,7 @@
             'jquery.spin'           :   'libs/spin/jquery.spin',
             'backbone.queryparams'  :   'libs/backbone/backbone.queryparams.min',
             'google-map'            :   'https://maps.googleapis.com/maps/api/js',
+            'backbone.validation'   :   'libs/backbone/backbone-validation-amd-min',
 
 
             // ----- Application
