@@ -25,7 +25,6 @@ namespace flats.Controllers
         [HttpPost]
         public JsonResult Add(AddFlatModel model)
         {
-            
             _flatService.Add(model);
             return Json(new { Success = true });
         }

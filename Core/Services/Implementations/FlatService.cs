@@ -84,10 +84,10 @@ namespace Core.Services.Implementations
                 var flatModel = new FlatViewModel();
                 Mapper.CreateMap(typeof(Flat), flatModel.GetType());
                 Mapper.Map(flat, flatModel);
-                flatModel.Imgs = new List<ImageData>();
+                flatModel.Images = new List<ImageData>();
                 if (flat.Images != null)
                     flat.Images.Each(
-                        f => flatModel.Imgs.Add(
+                        f => flatModel.Images.Add(
                             new ImageData(){ID = f.ID, Src = f.Path}
                     ));
                 return flatModel;
