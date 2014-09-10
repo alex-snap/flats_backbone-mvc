@@ -13,7 +13,6 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                         flatsListHeader = new View.Header(),
                         loadingView = new CommonViews.Loader();
 
-
                     FlatsManager.mainRegion.show(flatsListLayout);
                     flatsListLayout.headerRegion.show(flatsListHeader);
                     flatsListLayout.flatsRegion.show(loadingView);
@@ -21,6 +20,9 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                     $.when(fetchingFlats).done(function (flats) {
                         var flatsListView = new View.Flats({
                             collection: flats,
+                            initialize: function() {
+                                this.listenTo(this.collection, 'change', this.render);
+                            },
                             afterRender: function () {
                                 // TODO исправить, так не круто
                                 //var _this = this;
@@ -42,20 +44,14 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                         flatsListLayout.flatsRegion.show(flatsListView);
 
                         // поиск, фильтрация квартир
-                        flatsListHeader.on('flats:search', function (query) {
-                            flatsListView.triggerMethod('search:flats', query);
-                        });
+                        //flatsListHeader.on('flats:search', function (query) {
+                        //    flatsListView.triggerMethod('search:flats', query);
 
-                        // отображаем лэйаут со всем содержимым в main region нашего приложения
-                        //FlatsManager.mainRegion.show(flatsListLayout);
+                        //});
 
                     }).fail(function () {
                         var emptyView = new View.NoFlatsView();
-
                         flatsListLayout.flatsRegion.show(emptyView);
-
-                        // отображаем лэйаут со всем содержимым в main region нашего приложения
-                        //FlatsManager.mainRegion.show(flatsListLayout);
                     });
 
 
