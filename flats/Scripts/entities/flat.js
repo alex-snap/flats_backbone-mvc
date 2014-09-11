@@ -191,21 +191,20 @@ function (FlatsManager) {
 		};
 
         // обрабатываем запросы приложения FlatsManager
-		FlatsManager.reqres.setHandler('flat:entities', function (params) {
-		    return API.getFlatEntities(params);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity', function (id) {
-			return API.getFlatEntity(id);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity:new', function () {
-			return new Entities.Flat();
-		});
-
-		FlatsManager.reqres.setHandler('pageable:flat:entities', function () {
-		    return API.getPageableFlatEntities();
-		});
+        FlatsManager.reqres.setHandlers({
+            'flat:entities': function(params) {
+                return API.getFlatEntities(params);
+            },
+            'flat:entity': function(id) {
+                return API.getFlatEntity(id);
+            },
+            'flat:entity:new': function() {
+                return new Entities.Flat();
+            },
+            'pageable:flat:entities': function() {
+                return API.getPageableFlatEntities();
+            }
+        });
 
     });
 	return;
