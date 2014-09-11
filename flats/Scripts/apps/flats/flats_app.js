@@ -1,5 +1,4 @@
-define(['FlatsManager',
-        'backbone.queryparams'],
+define(['FlatsManager'],
 function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
 

@@ -5,20 +5,21 @@
             'jquery'                :   'libs/jquery/jquery-2.0.3.min',
             'underscore'            :   'libs/underscore/underscore.min',
             'backbone'              :   'libs/backbone/backbone.min',
+            'backbone.syphon'       :   'libs/backbone/backbone.syphon',
+            'backbone.stickit'      :   'libs/backbone/backbone.stickit.min',
+            'backbone.paginator'    :   'libs/backbone/backbone.paginator.min',
+            'backbone.queryparams'  :   'libs/backbone/backbone.queryparams.min',
             'marionette'            :   'libs/marionette/backbone.marionette.min',
             'text'                  :   'libs/require/text',
             'json2'                 :   'libs/json/json2.min',
             'jquery-ui'             :   'libs/jquery/jquery-ui.min',
             'localstorage'          :   'libs/backbone/backbone.localStorage.min',
             'tpl'                   :   'libs/underscore/underscore-tpl',
-            'backbone.syphon'       :   'libs/backbone/backbone.syphon',
-            'backbone.paginator'    :   'libs/backbone/backbone.paginator.min',
             'fileapi'               :   'libs/fileapi/FileAPI.min',
             'fileapiExif'           :   'libs/fileapi/FileAPI.exif',
             'jquery.fileapi'        :   'libs/fileapi/jquery.fileapi',
             'spin'                  :   'libs/spin/spin.min',
             'jquery.spin'           :   'libs/spin/jquery.spin',
-            'backbone.queryparams'  :   'libs/backbone/backbone.queryparams.min',
             'google-map'            :   'https://maps.googleapis.com/maps/api/js',
 
 
@@ -78,7 +79,7 @@
             'backbone.paginator':   ['backbone'],
             'jquery-ui'         :   ['jquery'],
             'tpl'               :   ['text'],
-            'jquery.spin'       :   ['spin']
+            'jquery.spin'       :   ['spin'],
         }
     }
 );

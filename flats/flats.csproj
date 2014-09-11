@@ -286,7 +286,9 @@
     <Content Include="Scripts\libs\backbone\backbone.js" />
     <Content Include="Scripts\libs\backbone\backbone.localStorage.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.paginator.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.queryparams.min.js" />
+    <Content Include="Scripts\libs\backbone\backbone.stickit.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.syphon.js" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.css" />
     <Content Include="Scripts\libs\backgrid\backgrid-paginator.min.js" />
