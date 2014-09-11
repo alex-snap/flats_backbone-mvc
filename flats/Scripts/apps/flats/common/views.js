@@ -13,7 +13,8 @@ function(FlatsManager, FlatEditTpl){
 		        uploadImgContainer  :   '.js-upload-container',
 		        submitBtn           :   '.js-submit',
                 imagesIds           :   '.js-images-list'
-            },
+		    },
+            imgUploader: null,
 			events: {
 			    'click .js-submit'  :   'submitClicked',
 			    'click .js-img-add' :   'addImgClicked'
@@ -29,8 +30,8 @@ function(FlatsManager, FlatEditTpl){
 			    $(this.ui.uploadImgContainer).find('#js-img-input').trigger('click');
 			},
 			onRender: function () {
-			    var imgUploader = new UploadImgConstructor();
-			    imgUploader.init.apply(this);
+			    this.imgUploader = new UploadImgConstructor();
+			    this.imgUploader.init.apply(this);
 			}
 		});
     });
@@ -38,6 +39,7 @@ function(FlatsManager, FlatEditTpl){
 
     // конструктор загрузки фото квартир
     // ---------------
+    // TODO разобраться со сборщиком мусора для плагина загрузки фоток
     var UploadImgConstructor = function () {
         var elms = {
             imgUpload       :   '.js-img__upload',

@@ -6,6 +6,7 @@ function (FlatsManager) {
     FlatsManager.module('Entities', function (Entities, FlatsManager, Backbone, Marionette, $, _) {
 
         // сущность flat
+        // ---------------
 		Entities.Flat = Backbone.Model.extend({
 			urlRoot: 'flats',
 			defaults: {
@@ -55,6 +56,7 @@ function (FlatsManager) {
 
         // коллекция flats для управления сущностями flat,
         // используется backbone.paginator
+        // ---------------
 		Entities.PageableFlatsCollection = Backbone.PageableCollection.extend({
             url: 'flats',
             model: Entities.Flat,
@@ -82,6 +84,7 @@ function (FlatsManager) {
 		});
 
         // коллекция flats для управления сущностями flat
+        // ---------------
         Entities.FlatsCollection = Backbone.Collection.extend({
         	url: 'flats',
         	model: Entities.Flat,
@@ -91,7 +94,8 @@ function (FlatsManager) {
         // добавляем миксину для работы с localstorage браузера
 		//Entities.configureStorage(Entities.FlatsCollection);
 
-		// функция создает, сохраняет и возвращает хардкод моделей квартир
+        // функция создает, сохраняет и возвращает хардкод моделей квартир
+        // ---------------
 		var initializeFlats = function () {
             // создаем коллекцию с квартирами
 			var flats = new Entities.FlatsCollection([
@@ -112,7 +116,8 @@ function (FlatsManager) {
 			return flats.models;
 		};
 
-		// API для работы с данными сущности "квартира"
+        // API для работы с данными сущности "квартира"
+        // ---------------
 		var API = {
             // получить все квартиры с сервера
 		    getFlatEntities: function (params) {
@@ -215,22 +220,21 @@ function (FlatsManager) {
 		};
 
         // обрабатываем запросы приложения FlatsManager
-		FlatsManager.reqres.setHandler('flat:entities', function (params) {
-		    return API.getFlatEntities(params);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity', function (id) {
-			return API.getFlatEntity(id);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity:new', function () {
-			return new Entities.Flat();
-		});
-
-		FlatsManager.reqres.setHandler('pageable:flat:entities', function () {
-		    return API.getPageableFlatEntities();
-		});
-
+        // ---------------
+        FlatsManager.reqres.setHandlers({
+            'flat:entities': function(params) {
+                return API.getFlatEntities(params);
+            },
+            'flat:entity': function(id) {
+                return API.getFlatEntity(id);
+            },
+            'flat:entity:new': function() {
+                return new Entities.Flat();
+            },
+            'pageable:flat:entities': function() {
+                return API.getPageableFlatEntities();
+            }
+        });
     });
 	return;
 });
