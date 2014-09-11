@@ -31,9 +31,6 @@ function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
                                 //        _this.collection.set(newFlats, { reset: true });
                                 //    });
                                 //});
-                            },
-                            setLoader: function() {
-                                this.$el.append(loadingView.$el);
                             }
                         });
 
