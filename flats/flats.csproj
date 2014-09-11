@@ -283,6 +283,7 @@
     <Content Include="Scripts\common\views.js" />
     <Content Include="Scripts\entities\flat.js" />
     <Content Include="Scripts\libs\almond\almond.js" />
+    <Content Include="Scripts\libs\backbone\backbone-validation-amd-min.js" />
     <Content Include="Scripts\libs\backbone\backbone.js" />
     <Content Include="Scripts\libs\backbone\backbone.localStorage.min.js" />
     <Content Include="Scripts\libs\backbone\backbone.min.js" />

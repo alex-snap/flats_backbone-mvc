@@ -47,7 +47,8 @@ function(FlatsManager, FlatEditTpl){
             imgProgress     :   '.js-img__progress',
             imgComplete     :   '.js-img__complete',
             imgBar          :   '.js-img__bar',
-            imgDelete       :   '.js-img__delete'
+            imgDelete       :   '.js-img__delete',
+            imgErrorTip     :   '.js-img__error'
         },
             imgCount = 0,
             uploadedCount = 0;
@@ -55,8 +56,9 @@ function(FlatsManager, FlatEditTpl){
         // init img upload
         // ----------
         function init() {
-            var _this = this;
-            $(_this.ui.uploadImgContainer).fileapi({
+            var _this = this,
+                $imgContainer = $(_this.ui.uploadImgContainer);
+            $imgContainer.fileapi({
                 url: '/files/image',
                 accept: 'image/*',
                 multiple: true,
@@ -65,7 +67,7 @@ function(FlatsManager, FlatEditTpl){
                 imageSize: { minWidth: 300, minHeight: 400 },
                 autoUpload: true,
                 elements: {
-                    emptyQueue: { hide: elms.imgUpload },
+                    emptyQueue: { hide: elms.imgUpload + ',' + elms.imgErrorTip },
                     list: elms.imgList,
                     file: {
                         tpl: elms.imgTpl,
@@ -77,6 +79,11 @@ function(FlatsManager, FlatEditTpl){
                         upload: { show: elms.imgProgress, hide: elms.imgComplete },
                         complete: { hide: elms.imgProgress, show: elms.imgDelete + ',' + elms.imgComplete },
                         progress: elms.imgBar
+                    }
+                },
+                onSelect: function (evt, uiEvt) {
+                    if (uiEvt.other[0].errors != undefined) {
+                        $imgContainer.find(elms.imgErrorTip).show().delay(4000).fadeOut();
                     }
                 },
                 onBeforeUpload: function (evt, uiEvt) {

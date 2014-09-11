@@ -255,6 +255,15 @@ body {
 .footer__inner {
   padding: 30px 0;
 }
+.btn {
+  outline: none;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  outline: none;
+}
 /* /Flats app*/
 /* Sub Applications
 -------------------------------------------------- */
