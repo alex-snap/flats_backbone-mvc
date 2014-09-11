@@ -23,10 +23,4 @@ namespace Core.Models
         public List<int> Imgs { get; set; }
     }
 
-    public class ImageData
-    {
-        public int ID { get; set; }
-
-        public string Src { get; set; }
-    }
 }
