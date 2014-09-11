@@ -349,6 +349,9 @@
     <Content Include="Content\less\styles.css.map">
       <DependentUpon>styles.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\libs\fileapi\jquery.fileapi.min.js.map">
+      <DependentUpon>jquery.fileapi.min.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\TestImgs\" />

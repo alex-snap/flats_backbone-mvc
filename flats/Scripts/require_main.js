@@ -37,6 +37,7 @@
             'views'                             :   'common/views',
             // -- modules
             'module/paginatorView'              :   'common/modules/collection-paginator/collection-paginator',
+            'module/vent': 'common/modules/vent/vent',
 
 
             // ----- Entities

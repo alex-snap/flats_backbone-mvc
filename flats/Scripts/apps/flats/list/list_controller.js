@@ -1,8 +1,9 @@
 define(['FlatsManager',
 		'app/flats/list_view',
         'module/paginatorView',
-        'views'],
-function (FlatsManager, View, PaginatorView, CommonViews, CollectionPaginator) {
+        'views',
+        'module/vent'],
+function (FlatsManager, View, PaginatorView, CommonViews) {
     FlatsManager.module('FlatsApp.List', function (List, FlatsManager, Backbone, Marionette, $, _) {
         List.Controller = {
             listFlats: function (params) {
