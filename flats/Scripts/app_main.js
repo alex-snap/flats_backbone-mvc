@@ -63,12 +63,27 @@ function (Marionette) {
         // инициализация модуля Common.Views
         // и отрисовка общего футера футера
         // ---------------
-        require(['views'], function () {
+        require(['commonViews'], function () {
             var footerView = new FlatsManager.Common.Views.Footer();
             FlatsManager.footerRegion.show(footerView);
         });
         console.log('FlatsManager: started');
     });
+
+    // backbone.history - это глобальный роутер для всего приложения
+    // поэтому мы можем отлавливая событие 'route' узнавать о смене url
+    // ---------------------
+    Backbone.history.on('route', function (controller, method) {
+        scrollUp();
+    });
+
+    // функция прокрутки страницы вверх
+    // ---------------------
+    function scrollUp() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 150);
+    }
 
     // ---------------------
     return FlatsManager;

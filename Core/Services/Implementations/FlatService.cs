@@ -98,7 +98,7 @@ namespace Core.Services.Implementations
                 if (flat == null)
                     return null;
                 var flatModel = new FlatViewModel();
-                Mapper.CreateMap(typeof(Flat), flatModel.GetType());
+                Mapper.CreateMap(typeof (Flat), flatModel.GetType()).ForMember("Images", op => op.Ignore());
                 Mapper.Map(flat, flatModel);
                 flatModel.Images = new List<ImageData>();
                 if (flat.Images != null)

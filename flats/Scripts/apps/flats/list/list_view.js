@@ -23,34 +23,35 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
         // Header
         // ---------------------
         View.Header = Marionette.ItemView.extend({
-		    template: HeaderTpl,
+            template: HeaderTpl,
+            prop: {
+                pressTimer: null
+            },
 			events: {
-			    'click .js-flats-search': 'submitFilter',
-			    'click .js-smart-filter': 'submitFilter',
-                'change input'          : 'submitFilter'
+			    'change input[type="radio"]'    : 'submitFilter',
+                'paste input'                   : 'submitFilter',
+                'submit form'                   : 'submitFilter',
+                'keyup input'                   : 'keyPressed'
 			},
 			ui: {
                 smartFilterBtn: '.js-smart-filter',
 			    searchString:   '.js-flats-search__criterion'
 			},
-			submitFilter: function () {
+			submitFilter: function (e) {
+			    e.preventDefault();
                 var filter = Backbone.Syphon.serialize(this);
                 this.trigger('flats:search', filter);
-			}
-            //searchClicked: function() {
-            //    var query = $(this.ui.searchString).val();
-            //    this.trigger('flats:search', query);
-            //},
-            //smartFilterClicked: function(e) {
-            //    var $btn = $(e.target);
-            //    if (!$btn.hasClass('active')) {
-            //        $(this.ui.smartFilterBtn).removeClass('active');
-            //        $btn.addClass('active');
-            //    }
-            //},
-			//onSetFilterCriterion: function(criterion){
-			//	$(this.ui.criterion).val(criterion);
-			//}
+			},
+			keyPressed: function (e) {
+			    var _this = this;
+                if (this.prop.pressTimer != null) {
+                    clearTimeout(this.prop.pressTimer);
+                    this.prop.pressTimer = null;
+                } 
+                this.prop.pressTimer = setTimeout(function () {
+                    _this.submitFilter(e);
+                }, 400);
+            }
 		});
 
         // Flat
@@ -94,13 +95,35 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 					}
 				});
 			},
-			onRenderCollection: function(){
-				this.appendHtml = function(collectionView, childView, index){
-					collectionView.$el.prepend(childView.el);
-				}
+			onRenderCollection: function() {
+		        this.appendHtml = function(collectionView, childView, index) {
+		            collectionView.$el.prepend(childView.el);
+		        }
 			},
-			onSearchFlats: function (query) {
-                this.collection.fetch({ data: query });
+			templateHelpers: function () {
+			    debugger;
+			    var p = this.options.pagination;
+			    var count = p.count;
+			    var options = p.opts;
+			    var pagination = {};
+
+			    if (count > options.perPage) {
+			        var range = floor(count > options.perPage);
+			        for (var i = range; i > 0; i--) {
+			            if (options.page + i <= count) {
+			                pagination.end = page + i;
+			            }
+			            if (range - i >= 0) {
+			                pagination.start = page - i;
+			            }
+			        }
+			    }
+			    --page > 0 ? pagination.prev = true : pagination.prev = false;
+			    ++page < pagination.end ? pagination.next = true : pagination.next = false;
+
+                return {
+                    pagination: pagination
+                }
             }
 		});
 	});

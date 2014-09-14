@@ -1,10 +1,12 @@
 ﻿define(['FlatsManager',
 		'config/localstorage',
-        'backbone.paginator'],
+        'backbone.paginator',
+        'backbone.validation'],
 function (FlatsManager) {
     FlatsManager.module('Entities', function (Entities, FlatsManager, Backbone, Marionette, $, _) {
 
         // сущность flat
+        // ---------------
 		Entities.Flat = Backbone.Model.extend({
 			urlRoot: 'flats',
 			defaults: {
@@ -15,15 +17,38 @@ function (FlatsManager) {
 				Description: '',
                 ImageLink: '/content/img/default.png'
 			},
-			validate: function(attrs, options){
-			    //var errors = {};
-                //if (!attrs.address) {
-                //    errors.address = 'Адрес обязателен';
-                //}
-				//if (!_.isEmpty(errors)){
-				//	return errors;
-				//}
-			}
+            validation: {
+                Address: {
+                    requried: true
+                },
+                Price: {
+                    required: true,
+                    pattern: 'number',
+                    min: 1
+                },
+                Rooms: {
+                    required: true,
+                    pattern: 'number',
+                    min: 1
+                },
+                Sleepers: {
+                    pattern: 'number',
+                    min: 0
+                },
+                Images: {
+                    minlength: 1
+                }
+            }
+            // встроенный метод валидации backbone
+			//validate: function(attrs, options){
+			//    var errors = {};
+            //    if (!attrs.address) {
+            //        errors.address = 'Адрес обязателен';
+            //    }
+			//	if (!_.isEmpty(errors)){
+			//		return errors;
+			//	}
+			//}
 		});
 
         // добавляем миксину для работы с localstorage браузера
@@ -31,13 +56,14 @@ function (FlatsManager) {
 
         // коллекция flats для управления сущностями flat,
         // используется backbone.paginator
+        // ---------------
 		Entities.PageableFlatsCollection = Backbone.PageableCollection.extend({
             url: 'flats',
             model: Entities.Flat,
             state: {
                 pageSize: 2,
                 // атрибут модели для сортировки
-                //sortKey: 'updated',
+                // sortKey: 'updated',
                 // 1 - сорировка в убывающем порядке,
                 // -1 - в вощрастающем,
                 // 0 - сортировки на клиенте не будет
@@ -58,16 +84,26 @@ function (FlatsManager) {
 		});
 
         // коллекция flats для управления сущностями flat
+        // ---------------
         Entities.FlatsCollection = Backbone.Collection.extend({
         	url: 'flats',
         	model: Entities.Flat,
-        	comparator: 'address'
+        	comparator: 'address',
+            parse: function(response) {
+                return {
+                    flats: response.flats,
+                    pagination: {
+                        length: response.count
+                    }
+                }
+            }
         });
 
         // добавляем миксину для работы с localstorage браузера
 		//Entities.configureStorage(Entities.FlatsCollection);
 
-		// функция создает, сохраняет и возвращает хардкод моделей квартир
+        // функция создает, сохраняет и возвращает хардкод моделей квартир
+        // ---------------
 		var initializeFlats = function () {
             // создаем коллекцию с квартирами
 			var flats = new Entities.FlatsCollection([
@@ -88,12 +124,13 @@ function (FlatsManager) {
 			return flats.models;
 		};
 
-		// API для работы с данными сущности "квартира"
+        // API для работы с данными сущности "квартира"
+        // ---------------
 		var API = {
             // получить все квартиры с сервера
 		    getFlatEntities: function (params) {
                 // создаем коллекцию для синхронизации данных
-				var flats = new Entities.FlatsCollection();
+				var flats = new Entities.FlatsCollection(params);
 				var defer = $.Deferred();
 				// fetch  - получает набор моделей с сервера
 				// (в данном случае из local storage) и 
@@ -191,22 +228,21 @@ function (FlatsManager) {
 		};
 
         // обрабатываем запросы приложения FlatsManager
-		FlatsManager.reqres.setHandler('flat:entities', function (params) {
-		    return API.getFlatEntities(params);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity', function (id) {
-			return API.getFlatEntity(id);
-		});
-
-		FlatsManager.reqres.setHandler('flat:entity:new', function () {
-			return new Entities.Flat();
-		});
-
-		FlatsManager.reqres.setHandler('pageable:flat:entities', function () {
-		    return API.getPageableFlatEntities();
-		});
-
+        // ---------------
+        FlatsManager.reqres.setHandlers({
+            'flat:entities': function(params) {
+                return API.getFlatEntities(params);
+            },
+            'flat:entity': function(id) {
+                return API.getFlatEntity(id);
+            },
+            'flat:entity:new': function() {
+                return new Entities.Flat();
+            },
+            'pageable:flat:entities': function() {
+                return API.getPageableFlatEntities();
+            }
+        });
     });
 	return;
 });

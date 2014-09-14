@@ -1,5 +1,4 @@
-define(['FlatsManager',
-        'backbone.queryparams'],
+define(['FlatsManager'],
 function(FlatsManager){
     FlatsManager.module('FlatsApp', function (FlatsApp, FlatsManager, Backbone, Marionette, $, _) {
 
@@ -71,7 +70,7 @@ function(FlatsManager){
             API.newFlat();
         });
         FlatsManager.addInitializer(function () {
-		    new FlatsApp.Router({
+		    FlatsApp.router = new FlatsApp.Router({
 				controller: API
 			});
         });

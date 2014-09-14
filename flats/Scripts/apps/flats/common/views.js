@@ -13,7 +13,8 @@ function(FlatsManager, FlatEditTpl){
 		        uploadImgContainer  :   '.js-upload-container',
 		        submitBtn           :   '.js-submit',
                 imagesIds           :   '.js-images-list'
-            },
+		    },
+            imgUploader: null,
 			events: {
 			    'click .js-submit'  :   'submitClicked',
 			    'click .js-img-add' :   'addImgClicked'
@@ -29,8 +30,8 @@ function(FlatsManager, FlatEditTpl){
 			    $(this.ui.uploadImgContainer).find('#js-img-input').trigger('click');
 			},
 			onRender: function () {
-			    var imgUploader = new UploadImgConstructor();
-			    imgUploader.init.apply(this);
+			    this.imgUploader = new UploadImgConstructor();
+			    this.imgUploader.init.apply(this);
 			}
 		});
     });
@@ -38,6 +39,7 @@ function(FlatsManager, FlatEditTpl){
 
     // конструктор загрузки фото квартир
     // ---------------
+    // TODO разобраться со сборщиком мусора для плагина загрузки фоток
     var UploadImgConstructor = function () {
         var elms = {
             imgUpload       :   '.js-img__upload',
@@ -47,7 +49,8 @@ function(FlatsManager, FlatEditTpl){
             imgProgress     :   '.js-img__progress',
             imgComplete     :   '.js-img__complete',
             imgBar          :   '.js-img__bar',
-            imgDelete       :   '.js-img__delete'
+            imgDelete       :   '.js-img__delete',
+            imgErrorTip     :   '.js-img__error'
         },
             imgCount = 0,
             uploadedCount = 0;
@@ -55,15 +58,18 @@ function(FlatsManager, FlatEditTpl){
         // init img upload
         // ----------
         function init() {
-            var _this = this;
-            $(_this.ui.uploadImgContainer).fileapi({
+            var _this = this,
+                $imgContainer = $(_this.ui.uploadImgContainer);
+            $imgContainer.fileapi({
                 url: '/files/image',
                 accept: 'image/*',
                 multiple: true,
                 maxFiles: 10,
+                maxSize: 10 * FileAPI.MB,
+                imageSize: { minWidth: 300, minHeight: 400 },
                 autoUpload: true,
                 elements: {
-                    emptyQueue: { hide: elms.imgUpload },
+                    emptyQueue: { hide: elms.imgUpload + ',' + elms.imgErrorTip },
                     list: elms.imgList,
                     file: {
                         tpl: elms.imgTpl,
@@ -77,6 +83,11 @@ function(FlatsManager, FlatEditTpl){
                         progress: elms.imgBar
                     }
                 },
+                onSelect: function (evt, uiEvt) {
+                    if (uiEvt.other[0].errors != undefined) {
+                        $imgContainer.find(elms.imgErrorTip).show().delay(4000).fadeOut();
+                    }
+                },
                 onBeforeUpload: function (evt, uiEvt) {
                     $(_this.ui.submitBtn).prop('disabled', true);
                     imgCount = uiEvt.files.length;
@@ -86,12 +97,10 @@ function(FlatsManager, FlatEditTpl){
                     var $el = uiEvt.file.$el,
                         $inputHidden = $('<input>', {
                             type: 'hidden',
-                            name: 'images[]',
+                            name: 'Images[]',
                             value: uiEvt.result
                         });
                     $el.append($inputHidden);
-
-                    // --------------
                     if (uiEvt.result != undefined) {
                         uploadedCount++;
                         if (imgCount === uploadedCount) {

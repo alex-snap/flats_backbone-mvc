@@ -17,10 +17,10 @@ function(FlatsManager, View){
 		            newFlatView.on('form:submit', function (data) {
 		                newFlatModel.save(data, {
 		                    success: function () {
-		                        FlatsManager.navigate('#flats');
+		                        FlatsManager.navigate('flats', {trigger: true});
 		                    },
 		                    error: function() {
-		                        alert('save error');
+		                        alert('saving error');
 		                    }
 		                });
 		            });
