@@ -1,6 +1,6 @@
 define(['FlatsManager',
 		'app/flats/show_view',
-        'views'],
+        'commonViews'],
 function (FlatsManager, View, CommonViews) {
 	FlatsManager.module('FlatsApp.Show', function(Show, FlatsManager, Backbone, Marionette, $, _){
 		Show.Controller = {

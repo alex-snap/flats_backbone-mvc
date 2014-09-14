@@ -1,14 +1,28 @@
 define(['FlatsManager',
 		'app/flats/list_view',
-        'module/paginatorView',
-        'views',
-        'module/vent'],
-function (FlatsManager, View, PaginatorView, CommonViews) {
+        'module/paginator',
+        'commonViews',
+        'backbone.queryparams'
+],
+function (FlatsManager, View, Paginator, CommonViews) {
     FlatsManager.module('FlatsApp.List', function (List, FlatsManager, Backbone, Marionette, $, _) {
         List.Controller = {
             listFlats: function (params) {
                 console.log('FlatsApp:ListController: method listFlats');
                 require(['entities/flat'], function () {
+
+                    // параметры страницы по умолчанию
+                    // ---------------------
+                    var prop = {
+                        perPage: 2,
+                        page: 1
+                    };
+
+                    // заполняем параметры по умолчанию
+                    // ---------------------
+                    if (params != undefined) {
+                        _.extend(prop, params);
+                    }
 
                     // создание основных view интерфейса
                     // ---------------------
@@ -22,11 +36,12 @@ function (FlatsManager, View, PaginatorView, CommonViews) {
 
                     // первоначальная загрузка страницы
                     // ---------------------
-                    renderFlats(params);
+                    renderFlats(prop);
 
-                    // обрабатываем события элементов интерфейса
+                    // обрабатываем события элементов интерфейса на странице
                     // ---------------------
                     flatsListHeader.on('flats:search', renderFlats);
+                    
 
                     // функция загрузки и отображения списка квартир
                     // ---------------------
@@ -34,15 +49,27 @@ function (FlatsManager, View, PaginatorView, CommonViews) {
                         var fetchingFlats = FlatsManager.request('flat:entities', p),
                             loadingView = new CommonViews.Loader();
                         flatsListLayout.flatsRegion.show(loadingView);
-                        $.when(fetchingFlats).done(function(flats) {
+                        $.when(fetchingFlats).done(function (response) {
+                            debugger;
                             var flatsListView = new View.Flats({
-                                collection: flats
+                                collection: response.flats,
+                                pagination: {
+                                    count: response.count,
+                                    opts: p
+                                }
+                                //collection: response,
+                                //pagination: {
+                                //    onePage: 1,
+                                //    count: 200
+                                //}
                             });
                             flatsListLayout.flatsRegion.show(flatsListView);
                         }).fail(function() {
                             var emptyView = new View.NoFlatsView();
                             flatsListLayout.flatsRegion.show(emptyView);
                         });
+                        //var route = FlatsManager.FlatsApp.router.toFragment(FlatsManager.getCurrenRoute(), p);
+                        //FlatsManager.navigate(route);
                     }
 
                     // url model test

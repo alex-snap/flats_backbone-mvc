@@ -95,13 +95,35 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 					}
 				});
 			},
-			onRenderCollection: function(){
-				this.appendHtml = function(collectionView, childView, index){
-					collectionView.$el.prepend(childView.el);
-				}
+			onRenderCollection: function() {
+		        this.appendHtml = function(collectionView, childView, index) {
+		            collectionView.$el.prepend(childView.el);
+		        }
 			},
-			onSearchFlats: function (query) {
-                this.collection.fetch({ data: query });
+			templateHelpers: function () {
+			    debugger;
+			    var p = this.options.pagination;
+			    var count = p.count;
+			    var options = p.opts;
+			    var pagination = {};
+
+			    if (count > options.perPage) {
+			        var range = floor(count > options.perPage);
+			        for (var i = range; i > 0; i--) {
+			            if (options.page + i <= count) {
+			                pagination.end = page + i;
+			            }
+			            if (range - i >= 0) {
+			                pagination.start = page - i;
+			            }
+			        }
+			    }
+			    --page > 0 ? pagination.prev = true : pagination.prev = false;
+			    ++page < pagination.end ? pagination.next = true : pagination.next = false;
+
+                return {
+                    pagination: pagination
+                }
             }
 		});
 	});

@@ -63,7 +63,7 @@ function (Marionette) {
         // инициализация модуля Common.Views
         // и отрисовка общего футера футера
         // ---------------
-        require(['views'], function () {
+        require(['commonViews'], function () {
             var footerView = new FlatsManager.Common.Views.Footer();
             FlatsManager.footerRegion.show(footerView);
         });

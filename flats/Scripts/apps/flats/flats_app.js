@@ -70,7 +70,7 @@ function(FlatsManager){
             API.newFlat();
         });
         FlatsManager.addInitializer(function () {
-		    new FlatsApp.Router({
+		    FlatsApp.router = new FlatsApp.Router({
 				controller: API
 			});
         });

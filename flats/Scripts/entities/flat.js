@@ -63,7 +63,7 @@ function (FlatsManager) {
             state: {
                 pageSize: 2,
                 // атрибут модели для сортировки
-                //sortKey: 'updated',
+                // sortKey: 'updated',
                 // 1 - сорировка в убывающем порядке,
                 // -1 - в вощрастающем,
                 // 0 - сортировки на клиенте не будет
@@ -88,7 +88,15 @@ function (FlatsManager) {
         Entities.FlatsCollection = Backbone.Collection.extend({
         	url: 'flats',
         	model: Entities.Flat,
-        	comparator: 'address'
+        	comparator: 'address',
+            parse: function(response) {
+                return {
+                    flats: response.flats,
+                    pagination: {
+                        length: response.count
+                    }
+                }
+            }
         });
 
         // добавляем миксину для работы с localstorage браузера
@@ -122,7 +130,7 @@ function (FlatsManager) {
             // получить все квартиры с сервера
 		    getFlatEntities: function (params) {
                 // создаем коллекцию для синхронизации данных
-				var flats = new Entities.FlatsCollection();
+				var flats = new Entities.FlatsCollection(params);
 				var defer = $.Deferred();
 				// fetch  - получает набор моделей с сервера
 				// (в данном случае из local storage) и 

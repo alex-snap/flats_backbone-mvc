@@ -35,9 +35,9 @@
             // -- utils
             'utils'                             :   'common/utils/utils',
             // -- views
-            'views'                             :   'common/views',
+            'commonViews'                       :   'common/views',
             // -- modules
-            'module/paginatorView'              :   'common/modules/collection-paginator/collection-paginator',
+            'module/paginator'                  :   'common/modules/collection-paginator/collection-paginator',
             'module/vent': 'common/modules/vent/vent',
 
 
