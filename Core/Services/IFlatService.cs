@@ -8,7 +8,7 @@ namespace Core.Services
     {
         void Add(AddFlatModel flat);
 
-        IEnumerable<FlatPreviewModel> GetAll(string sortBy, string query);
+        FlatsPaged GetAll(string sortBy, string query, int page, int perPage);
 
         FlatViewModel Get(int id);
 

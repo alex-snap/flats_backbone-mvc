@@ -29,7 +29,7 @@ namespace flats.Controllers
             return Json(new { Success = true });
         }
 
-        public JsonResult All(string sortBy, string query, AddFlatModel model)
+        public JsonResult All(string sortBy, string query, AddFlatModel model, int page = 1, int perPage = 0)
         {
             switch (Request.HttpMethod)
             {
@@ -37,7 +37,7 @@ namespace flats.Controllers
                     _flatService.Add(model);
                     return Json(new { Success = true });
                 default:
-                    return Json(_flatService.GetAll(sortBy, query), JsonRequestBehavior.AllowGet);
+                    return Json(_flatService.GetAll(sortBy, query, page, perPage), JsonRequestBehavior.AllowGet);
             }
         }
 

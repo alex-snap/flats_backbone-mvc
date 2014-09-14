@@ -13,4 +13,11 @@ namespace Core.Models
         public string ImageLink { get; set; }
         public DateTime Created { get; set; }
     }
+
+    public class FlatsPaged
+    {
+        public IEnumerable<FlatPreviewModel> Flats { get; set; }
+
+        public int Count { get; set; }
+    }
 }

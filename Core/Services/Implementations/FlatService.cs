@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Core.Const;
@@ -38,20 +39,31 @@ namespace Core.Services.Implementations
             }
         }
 
-        public IEnumerable<FlatPreviewModel> GetAll(string sortBy, string query)
+        public FlatsPaged GetAll(string sortBy, string query, int page, int perPage)
         {
             var flatsModel = new List<FlatPreviewModel>();
+            var pagedFlats = new FlatsPaged();
             using (EFDbContext db = new EFDbContext())
             {
                 List<Flat> flats;
+                pagedFlats.Count = db.Flats.Count();
+                perPage = perPage == 0 ? pagedFlats.Count : perPage;
+                int skip = (page - 1)*perPage;
                 if (!string.IsNullOrEmpty(query))
                 {
                     query = query.ToLower();
                     flats = db.Flats.Where(f => f.Address.ToLower().Contains(query)
-                                        || f.Description.ToLower().Contains(query)).ToList();
+                                        || f.Description.ToLower().Contains(query))
+                                    .OrderBy(f => f.Created)
+                                    .Skip(skip)
+                                    .Take(perPage)
+                                    .ToList();
                 }
                 else
-                    flats = db.Flats.ToList();
+                    flats = db.Flats.OrderBy(f => f.Created)
+                                    .Skip(skip)
+                                    .Take(perPage)
+                                    .ToList();
                 foreach (var flat in flats)
                 {
                     var flatModel = new FlatPreviewModel();
@@ -65,13 +77,17 @@ namespace Core.Services.Implementations
             switch (sortBy)
             {
                 case SortBy.MaxRooms:
-                    return flatsModel.OrderByDescending(f => f.Rooms);
+                    pagedFlats.Flats = flatsModel.OrderByDescending(f => f.Rooms);
+                    break;
                 case SortBy.MinPrice:
-                    return flatsModel.OrderBy(f => f.Price);
+                    pagedFlats.Flats = flatsModel.OrderBy(f => f.Price);
+                    break;
                 case SortBy.NewDate:
-                    return flatsModel.OrderByDescending(f => f.Created);
+                    pagedFlats.Flats = flatsModel.OrderByDescending(f => f.Created);
+                    break;
             }
-            return flatsModel;
+            pagedFlats.Flats = flatsModel;
+            return pagedFlats;
         }
 
         public FlatViewModel Get(int id)
