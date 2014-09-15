@@ -1,6 +1,5 @@
 ﻿define(['FlatsManager',
 		'config/localstorage',
-        'backbone.paginator',
         'backbone.validation'],
 function (FlatsManager) {
     FlatsManager.module('Entities', function (Entities, FlatsManager, Backbone, Marionette, $, _) {
@@ -13,32 +12,10 @@ function (FlatsManager) {
 				Address : '',
 				Price   : '',
 				Rooms   : '',
-				Sleeper: '',
+				Sleeper : '',
 				Description: '',
                 ImageLink: '/content/img/default.png'
 			},
-            validation: {
-                Address: {
-                    requried: true
-                },
-                Price: {
-                    required: true,
-                    pattern: 'number',
-                    min: 1
-                },
-                Rooms: {
-                    required: true,
-                    pattern: 'number',
-                    min: 1
-                },
-                Sleepers: {
-                    pattern: 'number',
-                    min: 0
-                },
-                Images: {
-                    minlength: 1
-                }
-            }
             // встроенный метод валидации backbone
 			//validate: function(attrs, options){
 			//    var errors = {};
@@ -53,35 +30,6 @@ function (FlatsManager) {
 
         // добавляем миксину для работы с localstorage браузера
 		//Entities.configureStorage(Entities.Flat);
-
-        // коллекция flats для управления сущностями flat,
-        // используется backbone.paginator
-        // ---------------
-		Entities.PageableFlatsCollection = Backbone.PageableCollection.extend({
-            url: 'flats',
-            model: Entities.Flat,
-            state: {
-                pageSize: 2,
-                // атрибут модели для сортировки
-                // sortKey: 'updated',
-                // 1 - сорировка в убывающем порядке,
-                // -1 - в вощрастающем,
-                // 0 - сортировки на клиенте не будет
-                order: 0
-            },
-            queryParams: {
-                totalPages: null,
-                totalRecords: null,
-                sortKey: 'sort',
-                queryString: ''
-            },
-            parseState: function (resp, queryParams, state, options) {
-                return { totalRecords: resp.total_count };
-            },
-            parseRecords: function (resp, options) {
-                return resp.items;
-            }
-		});
 
         // коллекция flats для управления сущностями flat
         // ---------------

@@ -15,10 +15,9 @@ function (FlatsManager, View, CommonViews) {
 				            var flatShowView = new View.Flat({
 				                model: flat
 				            });
+				            // отображаем лэйаут со всем содержимым в main region нашего приложения
+				            FlatsManager.mainRegion.show(flatShowView);
                         }
-
-						// отображаем лэйаут со всем содержимым в main region нашего приложения
-						FlatsManager.mainRegion.show(flatShowView);
 					});
 				});
 			}
