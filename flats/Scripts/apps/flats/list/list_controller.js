@@ -1,8 +1,7 @@
 define(['FlatsManager',
 		'app/flats/list_view',
         'module/paginator',
-        'commonViews',
-        'backbone.queryparams'
+        'commonViews'
 ],
 function (FlatsManager, View, Paginator, CommonViews) {
     FlatsManager.module('FlatsApp.List', function (List, FlatsManager, Backbone, Marionette, $, _) {
@@ -14,8 +13,9 @@ function (FlatsManager, View, Paginator, CommonViews) {
                     // параметры страницы по умолчанию
                     // ---------------------
                     var prop = {
-                        perPage: 2,
-                        page: 1
+                        perPage : 2,    // количество элементов на странице
+                        page    : 1,    // начальная страница
+                        range   : 2     // диапазон отображаемых страниц в пагинаторе
                     };
 
                     // заполняем параметры по умолчанию
@@ -36,7 +36,7 @@ function (FlatsManager, View, Paginator, CommonViews) {
 
                     // первоначальная загрузка страницы
                     // ---------------------
-                    renderFlats(prop);
+                    renderFlats();
 
                     // обрабатываем события элементов интерфейса на странице
                     // ---------------------
@@ -45,31 +45,35 @@ function (FlatsManager, View, Paginator, CommonViews) {
 
                     // функция загрузки и отображения списка квартир
                     // ---------------------
-                    function renderFlats(p) {
-                        var fetchingFlats = FlatsManager.request('flat:entities', p),
+                    function renderFlats(filter) {
+                        _.extend(prop, filter);
+                        var fetchingFlats = FlatsManager.request('flat:entities', prop),
                             loadingView = new CommonViews.Loader();
                         flatsListLayout.flatsRegion.show(loadingView);
-                        $.when(fetchingFlats).done(function (response) {
-                            debugger;
+                        $.when(fetchingFlats).done(function (flats, count) {
                             var flatsListView = new View.Flats({
-                                collection: response.flats,
+                                collection: flats,
                                 pagination: {
-                                    count: response.count,
-                                    opts: p
+                                    count: count,
+                                    opts: prop
                                 }
-                                //collection: response,
-                                //pagination: {
-                                //    onePage: 1,
-                                //    count: 200
-                                //}
+                            });
+                            flatsListView.on('page:change', function (page) {
+                                if (prop.page != page) {
+                                    prop.page = page;
+                                    renderFlats();
+                                }
                             });
                             flatsListLayout.flatsRegion.show(flatsListView);
                         }).fail(function() {
                             var emptyView = new View.NoFlatsView();
                             flatsListLayout.flatsRegion.show(emptyView);
                         });
-                        //var route = FlatsManager.FlatsApp.router.toFragment(FlatsManager.getCurrenRoute(), p);
-                        //FlatsManager.navigate(route);
+
+                        // меняем роут
+                        // --------------
+                        var route = FlatsManager.getBaseRoute().length ? FlatsManager.getBaseRoute() : FlatsManager.getCurrentRoute();
+                        FlatsManager.navigate(FlatsManager.FlatsApp.router.toFragment(route, prop));
                     }
 
                     // url model test

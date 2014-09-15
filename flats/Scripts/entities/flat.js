@@ -89,14 +89,9 @@ function (FlatsManager) {
         	url: 'flats',
         	model: Entities.Flat,
         	comparator: 'address',
-            parse: function(response) {
-                return {
-                    flats: response.flats,
-                    pagination: {
-                        length: response.count
-                    }
-                }
-            }
+        	parse: function (response) {
+	            return response.Flats;
+	        }
         });
 
         // добавляем миксину для работы с localstorage браузера
@@ -147,8 +142,8 @@ function (FlatsManager) {
 		        // например doc.fetch({data: {page: 3}}).
 
 				flats.fetch({
-					success: function(data){
-						// deferred.resolve() вызывает обработчики успешного завершения
+				    success: function (data, res) {
+					    // deferred.resolve() вызывает обработчики успешного завершения
 						// и переводит состояние объекта в "выполнено".
 						// Повторный вызов resolve не приводит к изменению состояния
 						// или повторному вызову обработчиков.
@@ -156,7 +151,7 @@ function (FlatsManager) {
 						// параметрами args.
 						// deferred.done(doneCallbacks) добавляет обработчик, который
 						// будет вызван, когда объект перейдёт в состояние выполнено
-						defer.resolve(data);
+						defer.resolve(data, res.Count);
 					},
                     error: function() {
                         defer.reject();

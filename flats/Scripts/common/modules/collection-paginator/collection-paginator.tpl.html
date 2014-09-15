@@ -1,24 +1,31 @@
-﻿<% if (pages!=null){ %>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="text-center">
-                <ul class="pagination">
-                    <% if (prev){%>
-                    <li>
-                        <a href="javascript:;" data-page="<%= --start %>">&laquo;</a>
-                    </li>
-                    <% } %>
-                </ul>
+﻿<% if (show) {%>
+<div class="paginator">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <ul class="pagination">
+                        <% if (prev && first < start) {%>
+                        <li>
+                            <a href="javascript:;" data-page="<%= first %>">&laquo;</a>
+                        </li>
+                        <% } %>
+                        
+                        <% for(var i = start; i <= end; i++){ %>
+                        <li class="<%= i == page ? 'active' : ''  %>">
+                            <a href="javascript:;" data-page="<%= i %>"><%= i %></a>
+                        </li>
+                        <% }; %>
+
+                        <% if (next && last > end) {%>
+                        <li>
+                            <a href="javascript:;" data-page="<%= last %>">&raquo;</a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <% } %>
-
-
-
-
-
-
-

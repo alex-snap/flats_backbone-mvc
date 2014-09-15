@@ -5,8 +5,9 @@ define(['FlatsManager',
         'tpl!apps/flats/list/templates/flats-list.tpl.html',
         'tpl!apps/flats/list/templates/flats-list-item.tpl.html',
         'tpl!apps/flats/list/templates/flats-list-none.tpl.html',
+        'module/paginator',
         'backbone.syphon'],
-function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
+function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl, paginator){
     FlatsManager.module('FlatsApp.List.View', function (View, FlatsManager, Backbone, Marionette, $, _) {
 
         // Layout
@@ -84,10 +85,16 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
         // Flats
         // ---------------------
 		View.Flats = Marionette.CompositeView.extend({
-			template: 	ListTpl,
+		    template: ListTpl,
+            events: {
+                'click .pagination a': 'changePage'
+            },
+            changePage: function (e) {
+                this.trigger('page:change', $(e.currentTarget).data('page'));
+            },
 			emptyView: 	View.NoFlatsView,
 			childView: 	View.Flat,
-			childViewContainer: '.container',
+			childViewContainer: '.js-flats-wrap',
 			initialize: function(){
 				this.listenTo(this.collection, 'reset', function(){
 					this.appendHtml = function(collectionView, childView, index){
@@ -101,30 +108,8 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl){
 		        }
 			},
 			templateHelpers: function () {
-			    debugger;
-			    var p = this.options.pagination;
-			    var count = p.count;
-			    var options = p.opts;
-			    var pagination = {};
-
-			    if (count > options.perPage) {
-			        var range = floor(count > options.perPage);
-			        for (var i = range; i > 0; i--) {
-			            if (options.page + i <= count) {
-			                pagination.end = page + i;
-			            }
-			            if (range - i >= 0) {
-			                pagination.start = page - i;
-			            }
-			        }
-			    }
-			    --page > 0 ? pagination.prev = true : pagination.prev = false;
-			    ++page < pagination.end ? pagination.next = true : pagination.next = false;
-
-                return {
-                    pagination: pagination
-                }
-            }
+			    return paginator.renderPaginator(this.options.pagination);
+			}
 		});
 	});
 	return FlatsManager.FlatsApp.List.View;

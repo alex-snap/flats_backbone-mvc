@@ -1,5 +1,6 @@
 ﻿define(['marionette',
-        'config/marionette.region.dialog'],
+        'config/marionette.region.dialog',
+        'backbone.queryparams'],
 function (Marionette) {
 
     // Создаем экземпляр главного приложения
@@ -26,8 +27,12 @@ function (Marionette) {
 
     // Метод получения текущего роута
     // ---------------------
-    FlatsManager.getCurrenRoute = function() {
+    FlatsManager.getCurrentRoute = function() {
         return Backbone.history.fragment;
+    };
+
+    FlatsManager.getBaseRoute = function () {
+        return Backbone.history.fragment.substring(0, Backbone.history.fragment.indexOf('?'));
     };
 
     // Метод для управления остановкой/запуском модулей
@@ -54,7 +59,7 @@ function (Marionette) {
         if (Backbone.history) {
             require(['app/flats', 'app/test'], function () {
                 Backbone.history.start();
-                if (FlatsManager.getCurrenRoute() === '') {
+                if (FlatsManager.getCurrentRoute() === '') {
                     FlatsManager.trigger('flats:list');
                 }
             });

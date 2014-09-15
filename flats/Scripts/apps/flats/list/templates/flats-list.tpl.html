@@ -1,20 +1,2 @@
-<div class="container"></div>
-<% if (pagination!=null) {%>
-<div class="paginator">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="text-center">
-                    <ul class="pagination">
-                        
-                        <li>
-                            <a href="javascript:;" data-page="<%= --start %>">&laquo;</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<% } %>
+<div class="container js-flats-wrap"></div>
+<%= pagination() %>

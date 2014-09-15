@@ -1,67 +1,41 @@
-﻿define(['marionette',
-        'tpl!common/modules/collection-paginator/collection-paginator.tpl.html'
-        //templates['module/paginator']
+﻿define(['tpl!common/modules/collection-paginator/collection-paginator.tpl.html'
 ],
-function (Marionette, PaginatorTpl) {
+function (PaginatorTpl) {
 
-    var paginator = {};
+    // count - общее количество элементов
+    // opts - опции, такие как текущая страница, диапазон отображаемых номеров страниц,
+    // количество элементов на одной странице
 
-    paginator.Model = Backbone.Model.extend({
-        defaults: {
-            prev: false,
-            next: false,
-            start: 1,
-            end: undefined,
-            showPages: 5,
-
-            pages: null,
-            active: 1
-        }
-    });
-
-    paginator.View = Marionette.ItemView.extend({
-        template: PaginatorTpl,
-        events: {
-            'click a': 'changePage'
-        },
-        changePage: function (newPage) {
-            var newModel = {};
-            if (this.model.pages > this.model.showPages) {
-                var range = floor(this.model.pages > this.model.showPages);
-                for (var i = range; i > 0; i--) {
-                    if (newPage + i <= this.model.pages) {
-                        newModel.end = newPage + i;
+    var paginator = {
+        renderPaginator: function (p) {
+            var pagination = {},
+                pages = Math.ceil(p.count / p.opts.perPage),
+                page = parseInt(p.opts.page);
+            if (p.count > p.opts.perPage) {
+                for (var i = parseInt(p.opts.range); i > 0; i--) {
+                    if (page + i <= pages && pagination.end == undefined) {
+                        pagination.end = page + i;
                     }
-                    if (range - i >= 0) {
-                        newModel.start = newPage - i;
+                    if (page - i > 0 && pagination.start == undefined) {
+                        pagination.start = page - i;
                     }
                 }
             }
-            --newPage > 0 ? newModel.prev = true : newModel.prev = false;
-            ++newPage < this.model.end ? newModel.next = true : newModel.next = false;
-            newModel.active = newPage;
-            this.model.set(newModel);
-            this.trigger('page:changed', newPage);
-        },
-        onRender: function () {
-            debugger;
-            this.changePage(this.model.get('curPage'));
-        },
-        initialize: function() {
-            this.listenTo(this.model, 'change', this.render);
+            pagination.start = pagination.start == undefined ? page : pagination.start;
+            pagination.end = pagination.end == undefined ? page : pagination.end;
+            pagination.first = 1;
+            pagination.last = pages;
+            pagination.page = page;
+            page - 1 > 0 ? pagination.prev = true : pagination.prev = false;
+            pagination.end ? pagination.next = true : pagination.next = false;
+            pagination.show = p.opts.perPage < p.count ? true : false;
+            return {
+                pagination: function () {
+                    return PaginatorTpl(pagination);
+                }
+            }
         }
-    });
-
-    function init(opts) {
-        var paginatorModel = new paginator.Model(opts);
-        var paginatorView = new paginator.View({
-            model: paginatorModel
-        });
-        return paginatorView;
-
-    }
-
-    return {
-        init: init
     };
+
+    return paginator;
 });
