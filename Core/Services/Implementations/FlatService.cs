@@ -46,24 +46,28 @@ namespace Core.Services.Implementations
             using (EFDbContext db = new EFDbContext())
             {
                 List<Flat> flats;
-                pagedFlats.Count = db.Flats.Count();
-                perPage = perPage == 0 ? pagedFlats.Count : perPage;
+                //pagedFlats.Count = db.Flats.Count();
+                perPage = perPage == 0 ? int.MaxValue : perPage;
                 int skip = (page - 1)*perPage;
                 if (!string.IsNullOrEmpty(query))
                 {
                     query = query.ToLower();
-                    flats = db.Flats.Where(f => f.Address.ToLower().Contains(query)
-                                        || f.Description.ToLower().Contains(query))
-                                    .OrderBy(f => f.Created)
-                                    .Skip(skip)
-                                    .Take(perPage)
-                                    .ToList();
+                    var q = db.Flats.Where(f => f.Address.ToLower().Contains(query)
+                                                || f.Description.ToLower().Contains(query))
+                        .OrderBy(f => f.Created)
+                        .Skip(skip)
+                        .Take(perPage);
+                    flats = q.ToList();
                 }
                 else
-                    flats = db.Flats.OrderBy(f => f.Created)
+                {
+                    var q = db.Flats.OrderBy(f => f.Created)
                                     .Skip(skip)
-                                    .Take(perPage)
-                                    .ToList();
+                                    .Take(perPage);
+                    System.Diagnostics.Debug.WriteLine(q);
+                    flats = q.ToList();
+                }
+                pagedFlats.Count = flats.Count;
                 foreach (var flat in flats)
                 {
                     var flatModel = new FlatPreviewModel();
