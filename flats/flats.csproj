@@ -312,7 +312,7 @@
     <Content Include="Scripts\libs\underscore\underscore-tpl.js" />
     <Content Include="Scripts\libs\underscore\underscore.js" />
     <Content Include="Scripts\libs\underscore\underscore.min.js" />
-    <Content Include="Scripts\require_main.built.js" />
+    <Content Include="Scripts\require_main.build.js" />
     <Content Include="Scripts\require_main.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

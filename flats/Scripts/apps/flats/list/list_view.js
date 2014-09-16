@@ -79,7 +79,7 @@ function(FlatsManager, Utils, LayoutTpl, HeaderTpl, ListTpl, ItemTpl, NoneTpl, p
 		View.NoFlatsView = Marionette.ItemView.extend({
 		    template:   NoneTpl,
             tag:        'div',
-			className: 	'alert alert-warning'
+			className: 	'container'
 		});
 
         // Flats

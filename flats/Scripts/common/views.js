@@ -17,7 +17,7 @@ function (FlatsManager, FooterTpl, LoaderTpl) {
             ui: {
                 loader: '.js-loader'
             },
-            message: "Please wait, data is loading.",
+            message: "Пожалуйста подождите, данные загружаются",
             serializeData: function () {
                 return {
                     title: this.title,
