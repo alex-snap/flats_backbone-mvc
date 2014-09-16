@@ -72,7 +72,7 @@ function (FlatsManager, View, Paginator, CommonViews) {
 
                         // меняем роут
                         // --------------
-                        var route = FlatsManager.getBaseRoute().length ? FlatsManager.getBaseRoute() : FlatsManager.getCurrentRoute();
+                        var route = FlatsManager.getBaseRoute();
                         FlatsManager.navigate(FlatsManager.FlatsApp.router.toFragment(route, prop));
                     }
 

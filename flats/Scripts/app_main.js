@@ -31,8 +31,11 @@ function (Marionette) {
         return Backbone.history.fragment;
     };
 
+    // Метод получения роута без аргументов
+    // ---------------------
     FlatsManager.getBaseRoute = function () {
-        return Backbone.history.fragment.substring(0, Backbone.history.fragment.indexOf('?'));
+        var r = Backbone.history.fragment.substring(0, Backbone.history.fragment.indexOf('?'));
+        return r.length ? r : FlatsManager.getCurrentRoute();
     };
 
     // Метод для управления остановкой/запуском модулей
@@ -66,7 +69,7 @@ function (Marionette) {
         }
 
         // инициализация модуля Common.Views
-        // и отрисовка общего футера футера
+        // и отрисовка общего футера
         // ---------------
         require(['commonViews'], function () {
             var footerView = new FlatsManager.Common.Views.Footer();
